@@ -10,12 +10,12 @@ export const metadata: Metadata = {
   openGraph: {
     images: {
       url: "/photo/68",
-      secureUrl: "/photo/68",
+      secureUrl: "https://miyulibackend.pp.ua/api/photo/68",
     },
     url: "/video/stream/1",
     videos: {
-      url: "/video/stream/1",
-      secureUrl: "/video/stream/1",
+      url: "https://miyulibackend.pp.ua/api/video/stream/1",
+      secureUrl: "https://miyulibackend.pp.ua/api/video/stream/1",
     },
   },
 };
