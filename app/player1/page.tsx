@@ -6,7 +6,7 @@ interface PlayerPageProps {}
 export const metadata: Metadata = {
   metadataBase: new URL("https://miyulibackend.pp.ua/api"),
   title: "Milord",
-  description: "Test SSR 3",
+  description: "Test SSR",
   openGraph: {
     images: {
       url: "http://miyulibackend.pp.ua/api/photo/68",
