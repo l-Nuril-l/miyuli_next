@@ -8,17 +8,17 @@ export const metadata: Metadata = {
   description: "Test SSR",
   openGraph: {
     title: "Milord Video",
+    type: "video.other",
+    url: "/player",
     images: {
       url: "http://miyulibackend.pp.ua/api/photo/68",
     },
-    url: "/player",
     videos: {
       url: "http://miyulibackend.pp.ua/api/video/stream/1",
       width: 1280,
       height: 720,
       type: "video/mpeg",
     },
-    type: "video.other",
   },
 };
 
