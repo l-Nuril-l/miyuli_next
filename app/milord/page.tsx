@@ -9,15 +9,17 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Milord Video",
     type: "video.other",
-    url: "/player",
+    url: "/milord",
     images: {
-      url: "http://miyulibackend.pp.ua/api/photo/68",
+      url: "https://miyulibackend.pp.ua/api/photo/68",
+      secureUrl: "https://miyulibackend.pp.ua/api/photo/68",
     },
     videos: {
-      url: "http://miyulibackend.pp.ua/api/video/stream/1",
+      url: "https://miyulibackend.pp.ua/api/video/stream/1",
+      secureUrl: "https://miyulibackend.pp.ua/api/video/stream/1",
       width: 1280,
       height: 720,
-      type: "video/mpeg",
+      type: "text/html",
     },
   },
 };
