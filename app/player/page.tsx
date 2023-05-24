@@ -6,17 +6,20 @@ interface PlayerPageProps {}
 export const metadata: Metadata = {
   metadataBase: new URL("https://miyulibackend.pp.ua/api"),
   title: "Milord",
-  description: "Test SSR 2",
+  description: "Test SSR 3",
   openGraph: {
     images: {
-      url: "/photo/68",
+      url: "http://miyulibackend.pp.ua/api/photo/68",
       secureUrl: "https://miyulibackend.pp.ua/api/photo/68",
     },
     url: "/video/stream/1",
     videos: {
-      url: "https://miyulibackend.pp.ua/api/video/stream/1",
+      url: "http://miyulibackend.pp.ua/api/video/stream/1",
       secureUrl: "https://miyulibackend.pp.ua/api/video/stream/1",
+      width: 1280,
+      height: 720,
     },
+    type: "video.other",
   },
 };
 
