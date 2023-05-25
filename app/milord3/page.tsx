@@ -11,10 +11,10 @@ export const metadata: Metadata = {
     type: "video.other",
     url: "/milord",
     images: {
-      url: "http://miyulibackend.pp.ua/api/video/stream/48",
+      url: "http://miyulibackend.pp.ua/api/photo/2",
     },
     videos: {
-      url: "http://miyulibackend.pp.ua/api/video/stream/48",
+      url: "http://miyulibackend.pp.ua/api/video/stream/2",
       width: 1280,
       height: 720,
       type: "text/html",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 const PlayerPage: FunctionComponent<PlayerPageProps> = () => {
   return (
     <>
-      <video controls src="http://h.zipdox.net/thursday/embed.webm"></video>
+      <video controls src="http://miyulibackend.pp.ua/api/video/stream/2"></video>
     </>
   );
 };
