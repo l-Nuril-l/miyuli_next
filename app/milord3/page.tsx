@@ -11,11 +11,10 @@ export const metadata: Metadata = {
     type: "video.other",
     url: "/milord",
     images: {
-      url: "http://miyulibackend.pp.ua/api/photo/68",
+      url: "http://miyulibackend.pp.ua/api/video/stream/48",
     },
     videos: {
-      url: "http://h.zipdox.net/thursday/embed.webm",
-      secureUrl: "https://h.zipdox.net/thursday/embed.webm",
+      url: "http://miyulibackend.pp.ua/api/video/stream/48",
       width: 1280,
       height: 720,
       type: "text/html",
