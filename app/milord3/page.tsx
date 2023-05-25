@@ -10,6 +10,9 @@ export const metadata: Metadata = {
     title: "Milord Video",
     type: "video.other",
     url: "/milord",
+    images: {
+      url: "http://miyulibackend.pp.ua/api/photo/68",
+    },
     videos: {
       url: "http://h.zipdox.net/thursday/embed.webm",
       secureUrl: "https://h.zipdox.net/thursday/embed.webm",

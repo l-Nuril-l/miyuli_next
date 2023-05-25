@@ -11,10 +11,10 @@ export const metadata: Metadata = {
     type: "video.other",
     url: "/milord",
     images: {
-      url: "https://miyulibackend.pp.ua/api/photo/68",
+      url: "http://miyulibackend.pp.ua/api/photo/68",
     },
     videos: {
-      url: "https://miyulibackend.pp.ua/api/video/stream/1",
+      url: "http://miyulibackend.pp.ua/api/video/stream/1",
       width: 1280,
       height: 720,
       type: "text/html",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 const PlayerPage: FunctionComponent<PlayerPageProps> = () => {
   return (
     <>
-      <video controls src="https://miyulibackend.pp.ua/api/video/stream/1"></video>
+      <video controls src="http://miyulibackend.pp.ua/api/video/stream/1"></video>
     </>
   );
 };

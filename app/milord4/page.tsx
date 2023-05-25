@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 const PlayerPage: FunctionComponent<PlayerPageProps> = () => {
   return (
     <>
-      <video controls src="http://h.zipdox.net/thursday/embed.webm"></video>
+      <video controls src="https://miyulibackend.pp.ua/api/video/stream/1"></video>
     </>
   );
 };
