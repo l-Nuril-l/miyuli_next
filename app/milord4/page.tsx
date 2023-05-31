@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Milord Video",
     type: "video.other",
-    url: "/milord",
+    url: "/milord4",
     images: {
       url: "http://h.zipdox.net/thursday/thumbnail.webp",
       secureUrl: "https://h.zipdox.net/thursday/thumbnail.webp",
