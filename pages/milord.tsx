@@ -39,7 +39,7 @@ const PlayerPage: NextPage<PlayerPageProps> = ({ video }) => {
   return (
     <>
       <Head>
-        <meta name="title" content={video.title} />
+        <title>{video.title}</title>
         <meta name="description" content={video.description} />
         <meta name="og:title" content={video.title} />
         <meta name="og:description" content={video.description} />
