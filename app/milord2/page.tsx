@@ -15,8 +15,8 @@ export const metadata: Metadata = {
       secureUrl: "https://miyulibackend.pp.ua/api/photo/68",
     },
     videos: {
-      url: "http://miyulibackend.pp.ua/api/video/stream/1",
-      secureUrl: "https://miyulibackend.pp.ua/api/video/stream/1",
+      url: "http://miyulibackend.pp.ua/api/video/stream/1.webm",
+      secureUrl: "https://miyulibackend.pp.ua/api/video/stream/1.webm",
       width: 1280,
       height: 720,
       type: "text/html",
