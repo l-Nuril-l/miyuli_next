@@ -23,8 +23,6 @@ export async function generateMetadata({ params }: PlayerPageProps): Promise<Met
       videos: {
         url: `http://miyulibackend.pp.ua/api/video/stream/${video.id}.mp4`,
         secureUrl: `https://miyulibackend.pp.ua/api/video/stream/${video.id}.mp4`,
-        width: 1280,
-        height: 720,
         type: "text/html",
       },
     },
