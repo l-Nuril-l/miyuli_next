@@ -1,7 +1,6 @@
 import axios from "axios";
-import { GetServerSideProps, Metadata } from "next";
+import { GetServerSideProps, Metadata, NextPage } from "next";
 import Head from "next/head";
-import { FunctionComponent } from "react";
 
 interface PlayerPageProps {
   video: IVideo;
@@ -37,7 +36,7 @@ export async function generateMetadata({ video }: PlayerPageProps): Promise<Meta
   };
 }
 
-const PlayerPage: FunctionComponent<PlayerPageProps> = ({ video }) => {
+const PlayerPage: NextPage<PlayerPageProps> = ({ video }) => {
   return (
     <>
       <Head>
