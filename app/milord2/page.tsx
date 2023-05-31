@@ -11,12 +11,12 @@ export const metadata: Metadata = {
     type: "video.other",
     url: "/milord2",
     images: {
-      url: "http://miyulibackend.pp.ua/api/photo/68",
-      secureUrl: "https://miyulibackend.pp.ua/api/photo/68",
+      url: "http://miyulibackend.pp.ua/api/video/thumbnail/5",
+      secureUrl: "https://miyulibackend.pp.ua/video/thumbnail/5",
     },
     videos: {
-      url: "http://miyulibackend.pp.ua/api/video/stream/1.webm",
-      secureUrl: "https://miyulibackend.pp.ua/api/video/stream/1.webm",
+      url: "http://miyulibackend.pp.ua/api/video/stream/5.mp4",
+      secureUrl: "https://miyulibackend.pp.ua/api/video/stream/5.mp4",
       width: 1280,
       height: 720,
       type: "text/html",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 const PlayerPage: FunctionComponent<PlayerPageProps> = () => {
   return (
     <>
-      <video controls src="http://miyulibackend.pp.ua/api/video/stream/1"></video>
+      <video controls src="https://miyulibackend.pp.ua/api/video/stream/5"></video>
     </>
   );
 };

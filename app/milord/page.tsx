@@ -11,8 +11,8 @@ export const metadata: Metadata = {
     type: "video.other",
     url: "/milord",
     images: {
-      url: "http://miyulibackend.pp.ua/api/photo/68",
-      secureUrl: "https://miyulibackend.pp.ua/api/photo/68",
+      url: "http://miyulibackend.pp.ua/api/video/thumbnail/48",
+      secureUrl: "https://miyulibackend.pp.ua/video/thumbnail/48",
     },
     videos: {
       url: "http://miyulibackend.pp.ua/api/video/stream/48.mp4",
