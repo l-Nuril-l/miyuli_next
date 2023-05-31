@@ -7,6 +7,7 @@ interface PlayerPageProps {
 }
 
 interface IVideo {
+  id: string;
   title: string;
   description: string;
 }
