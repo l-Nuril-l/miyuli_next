@@ -48,6 +48,7 @@ const PlayerPage: NextPage<PlayerPageProps> = ({ video }) => {
 
 export const getServerSideProps: GetServerSideProps<PlayerPageProps> = async () => {
   const video = (await axios.get<IVideo>(`https://miyulibackend.pp.ua/api/video/1`)).data;
+
   return { props: { video } };
 };
 
