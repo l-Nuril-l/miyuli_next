@@ -13,35 +13,15 @@ interface IVideo {
   description: string;
 }
 
-export async function generateMetadata({ video }: PlayerPageProps): Promise<Metadata> {
-  return {
-    title: `${video.title}`,
-    description: `${video.description}`,
-    openGraph: {
-      title: `${video.title}`,
-      description: `${video.description}`,
-      type: "video.other",
-      url: "/milord",
-      images: {
-        url: `http://miyulibackend.pp.ua/api/video/thumbnail/${video.id}`,
-        secureUrl: `https://miyulibackend.pp.ua/api/video/thumbnail/${video.id}`,
-      },
-      videos: {
-        url: `http://miyulibackend.pp.ua/api/video/stream/${video.id}.mp4`,
-        secureUrl: `https://miyulibackend.pp.ua/api/video/stream/${video.id}.mp4`,
-        width: 1280,
-        height: 720,
-        type: "text/html",
-      },
-    },
-  };
-}
+export const metadata: Metadata = {
+  title: "...",
+};
 
 const PlayerPage: NextPage<PlayerPageProps> = ({ video }) => {
   return (
     <>
       <Head>
-        <title>{video.title}</title>
+        {/* <title>{video.title}</title> */}
         <meta name="description" content={video.description} />
         <meta name="og:title" content={video.title} />
         <meta name="og:description" content={video.description} />

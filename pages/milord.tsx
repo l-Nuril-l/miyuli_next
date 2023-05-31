@@ -12,28 +12,9 @@ interface IVideo {
   description: string;
 }
 
-export async function generateMetadata({ video }: PlayerPageProps): Promise<Metadata> {
-  return {
-    title: "Milord",
-    description: "Test SSR",
-    openGraph: {
-      title: "Milord Video",
-      type: "video.other",
-      url: "/milord",
-      images: {
-        url: `http://miyulibackend.pp.ua/api/video/thumbnail/${video.id}`,
-        secureUrl: `https://miyulibackend.pp.ua/api/video/thumbnail/${video.id}`,
-      },
-      videos: {
-        url: `http://miyulibackend.pp.ua/api/video/stream/${video.id}.mp4`,
-        secureUrl: `https://miyulibackend.pp.ua/api/video/stream/${video.id}.mp4`,
-        width: 1280,
-        height: 720,
-        type: "text/html",
-      },
-    },
-  };
-}
+export const metadata: Metadata = {
+  title: "...",
+};
 
 const PlayerPage: NextPage<PlayerPageProps> = ({ video }) => {
   return (
