@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GetServerSideProps, Metadata, NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
 
 interface PlayerPageProps {
@@ -11,10 +11,6 @@ interface IVideo {
   title: string;
   description: string;
 }
-
-export const metadata: Metadata = {
-  title: "...",
-};
 
 const PlayerPage: NextPage<PlayerPageProps> = ({ video }) => {
   return (
