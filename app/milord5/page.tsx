@@ -15,8 +15,8 @@ export const metadata: Metadata = {
       secureUrl: "https://miyulibackend.pp.ua/api/photo/7",
     },
     videos: {
-      url: "http://miyulibackend.pp.ua/api/video/stream2/5.mp4",
-      secureUrl: "https://miyulibackend.pp.ua/api/video/stream2/5.mp4",
+      url: "http://miyulibackend.pp.ua/api/video/stream/5.mp4",
+      secureUrl: "https://miyulibackend.pp.ua/api/video/stream/5.mp4",
       width: 1280,
       height: 720,
       type: "text/html",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 const PlayerPage: FunctionComponent<PlayerPageProps> = () => {
   return (
     <>
-      <video controls src="http://miyulibackend.pp.ua/api/video/stream2/2.mp4"></video>
+      <video controls src="http://miyulibackend.pp.ua/api/video/stream/5.mp4"></video>
     </>
   );
 };
