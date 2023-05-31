@@ -1,17 +1,10 @@
+import IVideo from "@/interfaces/video.interface";
 import axios from "axios";
 import { Metadata } from "next";
-import { ReactElement } from "react";
 
 interface PlayerPageProps {
-  video: IVideo;
   params: { id: string };
   searchParams: { [key: string]: string | string[] | undefined };
-}
-
-interface IVideo {
-  id: string;
-  title: string;
-  description: string;
 }
 
 export async function generateMetadata({ params }: PlayerPageProps): Promise<Metadata> {
@@ -38,11 +31,11 @@ export async function generateMetadata({ params }: PlayerPageProps): Promise<Met
   };
 }
 
-export default async function PlayerPage({ params }: PlayerPageProps): Promise<ReactElement> {
-  let video = (await axios.get<IVideo>("http://miyulibackend.pp.ua/api/video/" + params.id)).data;
+export default async function PlayerPage({ params }: PlayerPageProps) {
+  const { data } = await axios.get<IVideo>("http://miyulibackend.pp.ua/api/video/" + params.id);
   return (
     <>
-      <video controls src={`https://miyulibackend.pp.ua/api/video/stream/${video.id}`}></video>
+      <video controls src={`https://miyulibackend.pp.ua/api/video/stream/${data.id}`}></video>
     </>
   );
 }
