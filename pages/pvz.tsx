@@ -1,16 +1,10 @@
-import axios from "axios";
+import IVideo from "@/interfaces/video.interface";
+import { VideoService } from "@/services/video.service";
 import { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
 
 interface PlayerPageProps {
   video: IVideo;
-}
-
-interface IVideo {
-  id: number;
-  title: string;
-  description: string;
 }
 
 const PlayerPage: NextPage<PlayerPageProps> = ({ video }) => {
@@ -32,13 +26,12 @@ const PlayerPage: NextPage<PlayerPageProps> = ({ video }) => {
         <meta name="og:video:type" content="text/html" />
       </Head>
       <video controls src={`https://miyulibackend.pp.ua/api/video/stream/${video.id}`}></video>
-      <Link href={"test"}>1</Link>
     </>
   );
 };
 
 export const getServerSideProps: GetServerSideProps<PlayerPageProps> = async () => {
-  const video = (await axios.get<IVideo>(`https://miyulibackend.pp.ua/api/video/5`)).data;
+  const video = await VideoService.getById("5");
   return { props: { video } };
 };
 
