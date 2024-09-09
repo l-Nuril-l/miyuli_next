@@ -1,6 +1,8 @@
 "use client";
 
-export default async function Todo({ todo }) {
+import ITodo from "@/interfaces/todo.interface";
+
+export default async function Todo({ todo }: { todo: ITodo }) {
   console.log(3);
   console.log(todo);
   //   const todo = await TodoService.getById("1");
