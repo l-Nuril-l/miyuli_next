@@ -2,7 +2,6 @@
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { cookies, headers } from "next/headers";
-import { useParams } from "next/navigation";
 import Button from "./(dev)/button";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -28,7 +27,6 @@ export async function setTokenCookie() {
 
 export default async function Home() {
   const cookiesStore = await cookies();
-  const params = useParams();
   const headerStore = await headers();
   const token = cookiesStore.get("token");
   const theme = cookiesStore.get("theme");
