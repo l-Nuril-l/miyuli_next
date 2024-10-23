@@ -1,0 +1,209 @@
+@import url(../components/AudioCard.scss);
+@import url(../components/AudioPlayer.scss);
+
+.audios {
+    border-radius: var(--page-block-border-radius);
+    background-color: var(--background-secondary);
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.rotate-x-180 {
+    transform: rotateX(180deg);
+}
+
+.rotate-y-180 {
+    transform: rotateY(180deg);
+}
+
+.audio_page {
+    overflow: auto;
+
+    .audio_player_wrap {
+        width: 100%;
+        margin: 15px 0;
+    }
+
+    .audio_player {
+        .player_audio_wrap:has(.audio_line) {
+            padding: 3px;
+        }
+    }
+
+    .fixed_audio_player {
+        position: fixed;
+        z-index: 1;
+        width: inherit;
+        max-width: 795px;
+        transform: translate(0, -144px);
+        margin: 0;
+        top: -96px;
+        transition: transform 500ms ease;
+    }
+
+    .fixed_audio_player_shown {
+        transform: translate(0, 144px);
+    }
+
+    .audios_container {
+        &:has(.audio_line) {
+            padding: 5px;
+        }
+
+        .audio_line {
+            background-color: var(--background-secondary);
+
+            &:hover {
+                background-color: var(--background-primary-variant);
+            }
+        }
+
+        .audio_playing {
+            background-color: var(--background-hover);
+        }
+    }
+}
+
+.audios_container {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.audio_playing {
+    background-color: var(--background-hover);
+}
+
+.playlists_wrap {
+    position: relative;
+
+    transition: 2s all ease;
+
+    &:hover .playlists_wrap__button {
+        visibility: visible;
+    }
+
+    .playlists_wrap__button {
+        position: absolute;
+        border-radius: 50%;
+        background-color: black;
+        border: 0;
+        padding: 5px;
+        opacity: 0.4;
+        visibility: hidden;
+        z-index: 1;
+
+        &:hover {
+            opacity: 0.5;
+        }
+
+        svg {
+            display: block;
+        }
+    }
+
+    .button--left {
+        left: 10px;
+        top: 50%;
+        transform: translate(0, -50%);
+        margin: auto;
+    }
+
+    .button--right {
+        top: 50%;
+        transform: translate(0, -50%);
+        right: 10px;
+        margin: auto;
+    }
+
+    .playlists_container {
+        display: flex;
+        padding: 0 10px;
+        gap: 10px;
+        overflow: auto;
+
+        &::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+        }
+
+        margin: 0;
+    }
+}
+
+.playlist {
+    .playlist_cover_wrap {
+        width: 143px;
+        height: 143px;
+        background-color: var(--background-primary-variant);
+        border-radius: 10px;
+        position: relative;
+        overflow: hidden;
+
+        .playlist_cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cover_placeholder {
+            padding: 43px;
+        }
+
+        &:hover .playlist_cover_actions_wrap {
+            display: flex;
+        }
+
+        .playlist_cover_actions_wrap {
+            display: none;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            position: absolute;
+            cursor: pointer;
+            background-color: rgba($color: #000000, $alpha: 0.5);
+        }
+
+        .playlist_cover_actions {
+            margin: auto;
+            display: flex;
+            align-items: center;
+
+            .audio_playlist_action {
+                width: 24px;
+                height: 24px;
+                margin: 0 6px;
+            }
+
+            .audio_playlist_action_remove {
+                background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20height%3D%2224%22%20width%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Cdefs%3E%3Cpath%20id%3D%22a%22%20d%3D%22m4%2015%204%204%2012-12%22%2F%3E%3Cfilter%20id%3D%22b%22%20height%3D%22348.3%25%22%20width%3D%22286.2%25%22%20x%3D%22-93.1%25%22%20y%3D%22-115.8%25%22%3E%3CfeMorphology%20in%3D%22SourceAlpha%22%20operator%3D%22dilate%22%20radius%3D%221.4%22%20result%3D%22shadowSpreadOuter1%22%2F%3E%3CfeOffset%20dy%3D%221%22%20in%3D%22shadowSpreadOuter1%22%20result%3D%22shadowOffsetOuter1%22%2F%3E%3CfeMorphology%20in%3D%22SourceAlpha%22%20radius%3D%221.5%22%20result%3D%22shadowInner%22%2F%3E%3CfeOffset%20dy%3D%221%22%20in%3D%22shadowInner%22%20result%3D%22shadowInner%22%2F%3E%3CfeComposite%20in%3D%22shadowOffsetOuter1%22%20in2%3D%22shadowInner%22%20operator%3D%22out%22%20result%3D%22shadowOffsetOuter1%22%2F%3E%3CfeGaussianBlur%20in%3D%22shadowOffsetOuter1%22%20result%3D%22shadowBlurOuter1%22%20stdDeviation%3D%224%22%2F%3E%3CfeColorMatrix%20in%3D%22shadowBlurOuter1%22%20values%3D%220%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200.4%200%22%2F%3E%3C%2Ffilter%3E%3C%2Fdefs%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Crect%20height%3D%2224%22%20opacity%3D%22.5%22%20rx%3D%222%22%20width%3D%2224%22%2F%3E%3Cg%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cuse%20fill%3D%22%23000%22%20filter%3D%22url\(%23b\)%22%20xlink%3Ahref%3D%22%23a%22%2F%3E%3Cuse%20stroke%3D%22%23fff%22%20stroke-width%3D%221.8%22%20xlink%3Ahref%3D%22%23a%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+            }
+
+            .audio_playlist_action_add {
+                background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Cdefs%3E%3Cpath%20id%3D%22a%22%20d%3D%22m11%2011v-7.571c0-.79.403-1.429.9-1.429s.9.64.9%201.429v7.571h7.771c.79%200%201.429.403%201.429.9s-.64.9-1.429.9h-7.77v7.771c0%20.79-.404%201.429-.9%201.429-.498%200-.9-.64-.9-1.429v-7.771h-7.573c-.79%200-1.429-.403-1.429-.9s.64-.9%201.429-.9z%22%2F%3E%3Cfilter%20id%3D%22b%22%20height%3D%22240%25%22%20width%3D%22240%25%22%20x%3D%22-70%25%22%20y%3D%22-65%25%22%3E%3CfeMorphology%20in%3D%22SourceAlpha%22%20operator%3D%22dilate%22%20radius%3D%22.5%22%20result%3D%22shadowSpreadOuter1%22%2F%3E%3CfeOffset%20dy%3D%221%22%20in%3D%22shadowSpreadOuter1%22%20result%3D%22shadowOffsetOuter1%22%2F%3E%3CfeGaussianBlur%20in%3D%22shadowOffsetOuter1%22%20result%3D%22shadowBlurOuter1%22%20stdDeviation%3D%224%22%2F%3E%3CfeColorMatrix%20in%3D%22shadowBlurOuter1%22%20values%3D%220%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200.4%200%22%2F%3E%3C%2Ffilter%3E%3C%2Fdefs%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cpath%20d%3D%22m0%200h24v24h-24z%22%2F%3E%3Cg%20fill-rule%3D%22nonzero%22%3E%3Cuse%20fill%3D%22%23000%22%20filter%3D%22url\(%23b\)%22%20xlink%3Ahref%3D%22%23a%22%2F%3E%3Cuse%20fill%3D%22%23fff%22%20fill-rule%3D%22evenodd%22%20xlink%3Ahref%3D%22%23a%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+            }
+
+            .audio_playlist_action_share {
+                background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20height%3D%2224%22%20width%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cpath%20d%3D%22m0%200h24v24h-24z%22%2F%3E%3Cpath%20d%3D%22m13%208.75v-4.348a.417.417%200%200%201%20.687-.318l8.94%207.598a.417.417%200%200%201%200%20.636l-8.94%207.598a.417.417%200%200%201%20-.687-.318v-4.348c-5.361%200-9.16%201.04-11.398%203.121a.25.25%200%200%201%20-.413-.241c1.496-6.253%205.434-9.38%2011.811-9.38z%22%20stroke%3D%22%23fff%22%20stroke-width%3D%221.8%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+            }
+
+            .audio_playlist_action_play {
+                width: 40px;
+                height: 45px;
+                background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20height%3D%2248%22%20viewBox%3D%220%200%2042%2048%22%20width%3D%2242%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Cdefs%3E%3Cpath%20id%3D%22a%22%20d%3D%22m15.514776%2038.5872125c-1.3888724.899654-2.514776.2768039-2.514776-1.363785v-26.4438996c0-1.65285169%201.1242033-2.26454039%202.514776-1.36378494l20.757036%2013.44554834c.9721331.6297076.9697008%201.6522408%200%202.2803728z%22%2F%3E%3Cfilter%20id%3D%22b%22%20height%3D%22193.3%25%22%20width%3D%22216.7%25%22%20x%3D%22-58.3%25%22%20y%3D%22-43.3%25%22%3E%3CfeMorphology%20in%3D%22SourceAlpha%22%20operator%3D%22dilate%22%20radius%3D%220.5%22%20result%3D%22shadowSpreadOuter1%22%2F%3E%3CfeOffset%20dy%3D%221%22%20in%3D%22shadowSpreadOuter1%22%20result%3D%22shadowOffsetOuter1%22%2F%3E%3CfeGaussianBlur%20in%3D%22shadowOffsetOuter1%22%20result%3D%22shadowBlurOuter1%22%20stdDeviation%3D%224%22%2F%3E%3CfeColorMatrix%20in%3D%22shadowBlurOuter1%22%20values%3D%220%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200.4%200%22%2F%3E%3C%2Ffilter%3E%3C%2Fdefs%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2223%22%20r%3D%2224%22%2F%3E%3Cg%20transform%3D%22translate(-4%20-1)%22%3E%3Cuse%20fill%3D%22%23000%22%20filter%3D%22url(%23b)%22%20xlink%3Ahref%3D%22%23a%22%2F%3E%3Cuse%20fill%3D%22%23fff%22%20xlink%3Ahref%3D%22%23a%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+            }
+
+            .audio_playlist_action_pause {
+                width: 40px;
+                height: 45px;
+                background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20height%3D%2248%22%20viewBox%3D%220%200%2040%2048%22%20width%3D%2240%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Cdefs%3E%3Cpath%20id%3D%22a%22%20d%3D%22m13%2010.5082641c0-.83299127.6764628-1.5082641%201.5063976-1.5082641h5.9872048c.8319604%200%201.5063976.66865487%201.5063976%201.5082641v26.9834718c0%20.8329913-.6764628%201.5082641-1.5063976%201.5082641h-5.9872048c-.8319604%200-1.5063976-.6686549-1.5063976-1.5082641zm13%200c0-.83299127.6764628-1.5082641%201.5063976-1.5082641h5.9872048c.8319604%200%201.5063976.66865487%201.5063976%201.5082641v26.9834718c0%20.8329913-.6764628%201.5082641-1.5063976%201.5082641h-5.9872048c-.8319604%200-1.5063976-.6686549-1.5063976-1.5082641z%22%2F%3E%3Cfilter%20id%3D%22b%22%20height%3D%22193.3%25%22%20width%3D%22227.3%25%22%20x%3D%22-63.6%25%22%20y%3D%22-43.3%25%22%3E%3CfeMorphology%20in%3D%22SourceAlpha%22%20operator%3D%22dilate%22%20radius%3D%220.5%22%20result%3D%22shadowSpreadOuter1%22%2F%3E%3CfeOffset%20dy%3D%221%22%20in%3D%22shadowSpreadOuter1%22%20result%3D%22shadowOffsetOuter1%22%2F%3E%3CfeGaussianBlur%20in%3D%22shadowOffsetOuter1%22%20result%3D%22shadowBlurOuter1%22%20stdDeviation%3D%224%22%2F%3E%3CfeColorMatrix%20in%3D%22shadowBlurOuter1%22%20values%3D%220%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200.4%200%22%2F%3E%3C%2Ffilter%3E%3C%2Fdefs%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2223%22%20r%3D%2224%22%2F%3E%3Cg%20transform%3D%22translate(-4%20-1)%22%3E%3Cuse%20fill%3D%22%23000%22%20filter%3D%22url(%23b)%22%20xlink%3Ahref%3D%22%23a%22%2F%3E%3Cuse%20fill%3D%22%23fff%22%20xlink%3Ahref%3D%22%23a%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+            }
+
+            .audio_playlist_action_edit {
+                background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20height%3D%2224%22%20width%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Cdefs%3E%3Cpath%20id%3D%22a%22%20d%3D%22m4.95%2017.15%201.705%201.679-.508.5-1.91.653c-.17.058-.26-.035-.227-.2l.433-2.131.508-.5zm1.492-1.467%2010.548-10.387a1.017%201.017%200%200%201%201.427.001l.28.275a.977.977%200%200%201%200%201.405l-10.549%2010.384-1.705-1.678z%22%2F%3E%3Cfilter%20id%3D%22b%22%20height%3D%22286.7%25%22%20width%3D%22286.8%25%22%20x%3D%22-93.4%25%22%20y%3D%22-86.7%25%22%3E%3CfeMorphology%20in%3D%22SourceAlpha%22%20operator%3D%22dilate%22%20radius%3D%22.5%22%20result%3D%22shadowSpreadOuter1%22%2F%3E%3CfeOffset%20dy%3D%221%22%20in%3D%22shadowSpreadOuter1%22%20result%3D%22shadowOffsetOuter1%22%2F%3E%3CfeGaussianBlur%20in%3D%22shadowOffsetOuter1%22%20result%3D%22shadowBlurOuter1%22%20stdDeviation%3D%224%22%2F%3E%3CfeColorMatrix%20in%3D%22shadowBlurOuter1%22%20values%3D%220%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200.4%200%22%2F%3E%3C%2Ffilter%3E%3C%2Fdefs%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cpath%20d%3D%22m0%200h24v24h-24z%22%2F%3E%3Cuse%20fill%3D%22%23000%22%20filter%3D%22url\(%23b\)%22%20xlink%3Ahref%3D%22%23a%22%2F%3E%3Cuse%20fill%3D%22%23fff%22%20xlink%3Ahref%3D%22%23a%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+            }
+        }
+    }
+}

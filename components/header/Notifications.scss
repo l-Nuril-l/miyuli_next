@@ -1,0 +1,13 @@
+.notifications_dropdown {
+    left: 0px;
+}
+
+@media (max-width: 900px) {
+    .notifications_dropdown {
+        left: auto;
+    }
+}
+
+#top_notifications_btn {
+    width: var(--header-height);
+}

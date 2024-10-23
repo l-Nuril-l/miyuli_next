@@ -1,0 +1,44 @@
+.message {
+    .message_svg {
+        display: flex;
+        align-items: center;
+    }
+
+    &:hover .message_actions {
+        display: flex;
+    }
+
+}
+
+.text-break {
+    a {
+        word-break: break-all;
+    }
+}
+
+.message_content {
+    position: relative;
+    width: 100%;
+    padding-right: 50px;
+
+    .message_actions {
+        display: none;
+        line-height: 1;
+        position: absolute;
+        right: 50px;
+        gap: 1px;
+
+        .action {
+            cursor: pointer;
+
+            &:hover svg {
+                color: white;
+                opacity: 0.8;
+            }
+        }
+    }
+
+    .message_attachments {
+        margin-right: 1rem;
+    }
+}

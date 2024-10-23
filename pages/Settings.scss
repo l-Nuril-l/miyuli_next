@@ -1,0 +1,105 @@
+.settings_line {
+    padding: 15px 0 14px;
+    border-bottom: 1px solid var(--separator-common);
+
+    .input {
+        &-wide {
+            width: 280px;
+            min-width: 280px;
+        }
+    }
+}
+
+.transactions_container {
+    padding: 10px;
+
+    .transaction_line {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 5px 0;
+        justify-content: space-between;
+        color: var(--text-secondary);
+        border-bottom: 1px var(--separator-common) solid;
+    }
+}
+
+.settings_label {
+    color: var(--text-secondary);
+    width: 155px;
+    line-height: 16px;
+    padding: 6px 10px 6px 0;
+}
+
+.settings_header {
+    padding: 15px;
+    border-bottom: 1px solid var(--separator-common);
+}
+
+.settings_change_form {
+    display: flex;
+}
+
+.settings_footer {
+    margin-top: auto;
+    background-color: var(--background-primary-variant);
+    border-radius: 0 0 5px 5px;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+.settings_info_block {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.settings_body {
+    padding: 0px 15px;
+}
+
+.settings_labeled_text {
+    flex-grow: 1;
+    position: relative;
+    word-break: break-word;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.settings_right_control {
+    margin-left: auto;
+}
+
+.settings_panel .settings_line:last-child {
+    border-bottom: none;
+}
+
+.settings_row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+
+.error {
+    background: url(/images/icons/msg_error.png) no-repeat 12px 12px;
+    border-radius: 4px;
+    color: #dc6f71;
+    border: 1px solid #eb6a6c;
+    margin: 3px 0 15px;
+    padding: 7px 18px 9px;
+    padding-left: 55px;
+    min-height: 40px;
+    line-height: 38px;
+}
+
+.ok_msg {
+    background: url(/images/icons/msg_ok.png) no-repeat 12px 12px;
+    border-radius: 4px;
+    min-height: 40px;
+    color: #66cc66;
+    border: 1px solid #66cc66;
+    margin: 3px 0 15px;
+    padding: 7px 18px 9px;
+    padding-left: 55px;
+    line-height: 38px;
+}

@@ -1,0 +1,40 @@
+#top_audio_btn {
+    padding: 0 5px;
+
+    .audio_dropdown {
+        left: 0px;
+        background-color: var(--background-secondary)
+    }
+
+    @media (max-width: 930px) {
+        .audio_dropdown {
+            left: auto;
+        }
+    }
+
+    @media (max-width: 860px) and (min-width: 769px) {
+        .audio_dropdown {
+            right: -60px;
+        }
+    }
+
+    .top_audio_btn_in {
+        max-height: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+
+        .text {
+            user-select: none;
+            padding: 0 5px;
+        }
+    }
+
+    button {
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        flex-shrink: 0;
+    }
+}

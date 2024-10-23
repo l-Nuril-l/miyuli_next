@@ -1,0 +1,23 @@
+.drag_here_zone {
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    background-color: var(--background-hover);
+
+
+    .drag_in {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        border: 1px dashed var(--text-secondary);
+        background-color: var(--background-hover);
+
+    }
+
+    .active {
+        background-color: var(--background-highlighted);
+    }
+}

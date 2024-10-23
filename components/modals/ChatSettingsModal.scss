@@ -1,0 +1,40 @@
+.modal_chat_settings {
+    &>header {
+        padding: 20px;
+        display: flex;
+        background-color: var(--background-secondary);
+        align-items: center;
+        gap: 10px;
+
+        .content {
+            width: 100%;
+        }
+    }
+
+    .list_item_wrap {
+        overflow: initial;
+        max-height: initial;
+
+        .aside {
+            display: flex;
+
+            .action {
+                position: relative;
+            }
+
+            &:hover {
+                .miyuli_dropdown {
+                    display: block;
+                    right: 0px;
+                    //z-index: 212313;
+                }
+            }
+        }
+    }
+
+    .leave_chat {
+        padding: 10px;
+        text-align: center;
+        margin-bottom: 0;
+    }
+}

@@ -1,0 +1,17 @@
+.left_row a {
+    padding: 5px;
+    display: flex;
+    color: var(--side-bar);
+    display: flex;
+    align-items: center;
+}
+
+.left_row a:hover {
+    background-color: var(--background-hover);
+    border-radius: 5px;
+}
+
+.left_row_hr {
+    opacity: 0.5;
+    margin: 10px 15px 10px 30px;
+}

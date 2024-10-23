@@ -1,16 +1,9 @@
-import { Metadata } from "next";
+"use server";
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: "GENERATED TITLE",
-    description: "GEN DES",
-    openGraph: {
-      title: "OTG",
-      url: "/",
-    },
-  };
-}
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
-export default function Home() {
-  return <main className="flex min-h-screen flex-col items-center justify-between p-24">HELLO</main>;
+export default async function Home() {
+  const cookiesStore = await cookies();
+  redirect(cookiesStore.has("auth") ? "feed" : "login");
 }

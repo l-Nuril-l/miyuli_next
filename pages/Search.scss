@@ -1,0 +1,28 @@
+.search_page {
+    overflow: hidden;
+    margin: 0px 10px;
+
+    .search_wrap~.sections :first-child {
+        .page_block_sub_header:first-of-type {
+            border-top: none;
+        }
+    }
+
+    .sections {
+        .page_block_sub_header {
+            border-top: 1px var(--separator-common) solid;
+        }
+
+        hr {
+            margin: 0.5rem 0 0 0;
+
+            &:first-of-type {
+                display: none;
+            }
+        }
+    }
+
+    .header_item_right {
+        font-weight: 500;
+    }
+}

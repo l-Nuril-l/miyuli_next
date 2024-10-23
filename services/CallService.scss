@@ -1,0 +1,80 @@
+.modal_call {
+    border-radius: 10px;
+    max-height: 100%;
+}
+
+.p2p_chat {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+
+    .messages_wrap {
+        overflow: auto;
+    }
+}
+
+.modal_call_minimized {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--separator-dark);
+    background-color: var(--background-primary-variant);
+}
+
+.modal_incoming_call {
+    text-align: center;
+    background-color: var(--background-primary-variant);
+    padding: 10px;
+    z-index: 11;
+    border-radius: 10px;
+
+    .actions {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+
+        .btn_miyuli {
+            svg {
+                color: white;
+            }
+
+            &:hover {
+                opacity: 0.9;
+            }
+        }
+    }
+}
+
+.call_container {
+    .call_top {
+        display: flex;
+    }
+
+    .calls_wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .call_controls {
+        padding-top: 5px;
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+
+        .btn_miyuli {
+            svg {
+                color: white;
+            }
+        }
+
+        .decline {
+            background-color: var(--red_light);
+
+            &:hover {
+                opacity: 0.9;
+            }
+        }
+    }
+}

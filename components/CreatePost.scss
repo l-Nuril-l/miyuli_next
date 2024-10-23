@@ -1,0 +1,46 @@
+.text_area_container {
+    flex-grow: 1;
+    position: relative;
+}
+
+.post_footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-top: 1px solid var(--separator-common);
+    padding: 13px 20px 12px;
+
+    .post_actions_left,
+    .post_actions_right {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+
+        .attachment_icon {
+            cursor: pointer;
+        }
+    }
+
+    .post_actions_right {
+        margin-left: auto;
+    }
+
+    .post_settings_wrap {
+        position: relative;
+
+        &:hover {
+            .miyuli_dropdown {
+                display: block;
+                right: 0;
+            }
+        }
+    }
+}
+
+.create_post_wrapper {
+    position: relative;
+
+    .attachment_container {
+        display: flex;
+    }
+}

@@ -1,0 +1,40 @@
+.modal .modal_audioplaylist {
+    background-color: var(--background-secondary);
+
+    .playlist_header {
+        display: flex;
+        border-bottom: 1px solid var(--separator-common);
+
+        .header_playlist_cover {
+            flex-shrink: 0;
+            width: 143px;
+            height: 143px;
+
+            .playlist_cover {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .header_playlist_info {
+            width: 100%;
+            padding: 10px;
+        }
+
+        .playlist_cover_placeholder {
+            background-color: var(--placeholder_icon_background);
+            padding: 43px;
+        }
+    }
+
+    .playlist_body {
+        .playlist_description {
+            text-align: center;
+        }
+    }
+
+    .playlist_footer {
+        padding: 8px 8px 4px;
+    }
+}

@@ -1,0 +1,49 @@
+.modal_header_has_image {
+    display: flex;
+
+    &>*:nth-child(1) {
+        flex-shrink: 0;
+        width: 143px;
+        height: 143px;
+        position: relative;
+
+        &:hover {
+            .remove {
+                display: flex;
+            }
+        }
+
+        .remove {
+            position: absolute;
+            display: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            top: 0;
+            right: 0;
+            width: 15px;
+            height: 15px;
+            font-size: 8px;
+            line-height: 1;
+            background-color: rgba(0, 0, 0, 0.3333333333);
+            align-items: center;
+            justify-content: center;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &>*:nth-child(2) {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .image_placeholder {
+        background-color: var(--placeholder_icon_background);
+        padding: 43px;
+        cursor: pointer;
+    }
+}

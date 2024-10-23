@@ -1,0 +1,31 @@
+.account_card{
+    display: flex;
+    
+}
+.card_roles{
+    display: flex;
+}
+
+.role_page{
+    margin: auto;
+    max-width: var(--layout-width);
+}
+
+.role_card{
+    display: flex;
+    background-color: var(--background-primary-variant);
+    border-radius: 25px;
+    padding: 0px 8px;
+
+    .role_card_delete{
+        cursor: pointer;
+        margin-left: 5px;
+        align-self: center;
+        background-color: var(--background-secondary-variant);
+        border-radius: 50px;
+        width: 20px;
+        text-align: center;
+        height: 20px;
+        line-height: 1;
+    }
+}

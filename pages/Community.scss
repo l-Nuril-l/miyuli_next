@@ -1,0 +1,119 @@
+.community_content {
+    display: grid;
+    grid-template-columns: 1fr 230px;
+    grid-gap: 15px;
+}
+
+@media (max-width: 768px) {
+    .community_content {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 0;
+    }
+}
+
+.page_action_menu_groups {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.community_header {
+    .cover_container {
+        height: 300px;
+        position: relative;
+
+
+        .cover_actions {
+            display: flex;
+            opacity: 0;
+            top: 10px;
+            right: 10px;
+            position: absolute;
+            gap: 5px;
+
+            .action {
+                padding: 9px;
+                background: rgba(31, 31, 31, .75);
+                border-radius: 3px;
+                cursor: pointer;
+
+                &::before {
+                    content: '';
+                    display: block;
+                    width: 19px;
+                    height: 19px;
+                    opacity: .8;
+                }
+
+                &:hover::before {
+                    opacity: 1;
+                }
+            }
+
+            .upload::before {
+                background: url(/images/icons/groups/cover_add.svg) center no-repeat;
+            }
+
+            .crop::before {
+                background: url(/images/icons/groups/cover_crop.svg) center no-repeat;
+            }
+
+            .delete::before {
+                background: url(/images/icons/groups/cover_delete.svg) center no-repeat;
+            }
+        }
+
+        &:hover {
+            .cover_actions {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.community_header .no_cover {
+    text-align: center;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--background-hover);
+        border-radius: 5px 5px 0 0;
+    }
+}
+
+.community_avatar {
+    position: relative;
+
+    &:hover {
+        .miyuli_dropdown {
+            top: 100%;
+            left: 0;
+            display: block;
+        }
+    }
+}
+
+.header_data {
+    padding: 12px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.people_row {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    max-width: 100%;
+}
+
+.people_row_name {
+    white-space: nowrap;
+    margin-left: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

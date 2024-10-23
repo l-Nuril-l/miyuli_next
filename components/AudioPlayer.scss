@@ -1,0 +1,42 @@
+.rhap_time {
+    min-width: 47px;
+    color: var(--text-primary) !important;
+}
+
+.rhap_container {
+    background-color: var(--background-secondary) !important;
+}
+
+.rhap_volume-bar {
+    appearance: none;
+    min-width: 100%;
+
+    &::-webkit-slider-thumb {
+        appearance: none;
+        box-sizing: border-box;
+        width: 12px;
+        height: 12px;
+        background-color: #868686;
+        opacity: 0.9;
+        border-radius: 50px;
+        box-shadow: rgb(134 134 134 / 50%) 0 0 3px;
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 450px) {
+    .rhap_controls-section {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+
+        .rhap_main-controls {
+            grid-column: span 2;
+        }
+    }
+
+    .rhap_additional-controls,
+    .rhap_volume-controls {
+        grid-row: 1;
+    }
+}

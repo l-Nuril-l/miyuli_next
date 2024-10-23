@@ -1,0 +1,52 @@
+.albums_wrap {
+    padding: 6px 10px 8px;
+    gap: 5px;
+
+    .album_holder {
+        margin: 15px 0 -1px;
+        min-height: 125px;
+        width: 100%;
+
+        &:first-child {
+            margin: 0;
+        }
+    }
+}
+
+.album_holder {
+    position: relative;
+    background-color: var(--placeholder_icon_background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    max-height: 30vh;
+    aspect-ratio: 16/9;
+    min-height: 125px;
+    overflow: hidden;
+    max-width: 100%;
+
+    .image {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        max-height: 30vh;
+    }
+
+    .album_info {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 9px 12px 9px;
+        display: flex;
+        justify-content: space-between;
+
+        .album_count {
+            color: var(--text-secondary);
+        }
+    }
+
+    .no_img_camera_icon {
+        max-width: 15vw;
+    }
+}

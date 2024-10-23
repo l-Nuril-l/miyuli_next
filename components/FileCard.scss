@@ -1,0 +1,50 @@
+.file_row {
+    margin: 10px 0;
+    display: flex;
+
+    .file_info {
+        color: var(--text-secondary);
+        font-size: 12px;
+        line-height: 1;
+    }
+
+    .file_item_icon {
+        cursor: pointer;
+        margin: 2px;
+        margin-right: 10px;
+        width: 30px;
+        background: url(/images/icons/doc_icons.png) no-repeat;
+        height: 30px;
+        flex-shrink: 0;
+    }
+
+    .file_icon {
+        background-position: left -180px;
+    }
+
+    .file_card_content {
+        flex-grow: 1;
+    }
+
+    &:hover {
+        .file_card_actions {
+            visibility: visible;
+        }
+    }
+
+    .file_card_actions {
+        display: flex;
+        flex-shrink: 0;
+        visibility: hidden;
+        align-items: center;
+
+        .card_action {
+            cursor: pointer;
+            opacity: .75;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+}

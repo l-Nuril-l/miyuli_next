@@ -1,0 +1,53 @@
+.profile_dropdown {
+    right: 0;
+    padding-top: 12px;
+    padding-bottom: 8px;
+    text-align: center;
+    font-weight: 500;
+    overflow: visible;
+    width: 300px;
+    background-color: var(--background-secondary);
+}
+
+.top_profile_setings {
+    width: 250px;
+    margin: auto;
+}
+
+.dropdown_menu {
+    background-color: var(--background-secondary);
+    border: 1px solid var(--modal-card-border);
+}
+
+.dropdown_item {
+    color: var(--text-primary);
+}
+
+.menu_item_icon svg {
+    color: rgb(161, 159, 159);
+}
+
+.top_profile_row {
+    display: flex;
+    align-items: center;
+    height: 36px;
+    font-size: 13px;
+    padding: 0 16px;
+    color: var(--text-primary);
+}
+
+#top_profile_btn {
+    padding-left: 10px;
+
+    .dropdown_arrow {
+        margin: 0 8px 0 6px;
+    }
+}
+
+.top_profile_row:hover {
+    background-color: var(--background-hover-row);
+}
+
+.menu_item_icon {
+    margin-right: 10px;
+}

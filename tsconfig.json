@@ -6,7 +6,7 @@
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
+    "noEmit": false, //encrypt source code
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
@@ -21,8 +21,12 @@
     ],
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    "checkJs": true,
+    "noImplicitAny": false,
+    "importHelpers": true,
+    "allowSyntheticDefaultImports": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "services/miyuli.service copy.js"],
+  "exclude": ["node_modules", ".next"]
 }

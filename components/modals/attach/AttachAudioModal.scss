@@ -1,0 +1,21 @@
+.attach_audio_row {
+    display: flex;
+
+    .attach_btn {
+        display: flex;
+        align-items: center;
+        padding-left: 10px;
+        padding-right: 10px;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+
+}
+
+.modal .audios_container {
+    padding: 4px 3px;
+}

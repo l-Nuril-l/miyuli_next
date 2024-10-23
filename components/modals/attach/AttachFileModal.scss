@@ -1,0 +1,44 @@
+.attach_file_container {
+    position: relative;
+    margin: 0px -15px;
+    padding: 0px 15px;
+
+    &:hover {
+        background-color: var(--background-hover);
+
+        .attach_text {
+            display: flex;
+        }
+    }
+
+    cursor: pointer;
+
+    .attach_text {
+        display: none;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 20px;
+        align-items: center;
+        color: var(--text-secondary);
+    }
+
+}
+
+.upload_file_area {
+    background-color: var(--background-secondary);
+    padding: 10px;
+    text-align: center;
+}
+
+.modal_miyuli:has(.infinite_scroll_container) {
+    max-height: calc(90vh - var(--header-height));
+    // overflow: auto;
+}
+
+.modal .files_container {
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}

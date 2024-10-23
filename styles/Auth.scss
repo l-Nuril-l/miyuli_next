@@ -1,0 +1,147 @@
+.sign_in {
+    margin: 120px auto;
+    padding: 32px 24px;
+    border-radius: 8px;
+    margin-top: 96px;
+    margin-bottom: 0;
+    max-width: 320px;
+
+    .form_logo {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .login_header {
+        font-family: "Permanent Marker", cursive;
+        letter-spacing: 2px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .remember_checkbox {
+        margin: 5px 0px;
+    }
+
+    .remember_input {
+        display: none;
+
+    }
+}
+
+.reset_password .ok_msg {
+    line-height: normal;
+}
+
+.sign_up_page {
+    .other_sign {
+        margin: 0 0 16px 0;
+    }
+
+    .sign_footer {
+        padding-top: 16px;
+    }
+}
+
+.sign_up {
+    margin: auto;
+    padding: 12px 24px 24px 24px;
+    margin-top: 16px;
+    max-width: 640px;
+
+    .col {
+        min-width: 176px;
+    }
+}
+
+.registration_slides {
+    width: 300%;
+    transition: 0.3s;
+    left: 0;
+    overflow-x: hidden;
+    margin-left: calc(-100% * (var(--page) - 1));
+
+    &>* {
+        padding: 0 3px;
+        float: left;
+        height: 100%;
+        width: 33.333334%;
+    }
+}
+
+.sign_footer {
+    margin: 120px auto;
+    padding: 32px 24px;
+    border-radius: 8px;
+    margin-top: 16px;
+    margin-bottom: 0;
+    max-width: 320px;
+    text-align: center;
+
+    .register_btn {
+        color: white;
+        width: 100%;
+        background-color: var(--button_commerce_background);
+    }
+
+    .forgot_password {
+        padding-top: 5px;
+        text-align: center;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.switchers {
+    margin: 0 auto;
+    padding: 32px 24px;
+    max-width: 350px;
+    display: flex;
+    justify-content: space-between;
+    font-family: "Permanent Marker", -apple-system, BlinkMacSystemFont, "Segoe UI", "Robddawdwasdoto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+
+    .custom_toggle {
+        cursor: pointer;
+        display: flex;
+        align-self: center;
+
+        .menu_item_icon {
+            display: flex;
+            align-items: center;
+        }
+    }
+}
+
+#signInDiv {
+    display: flex;
+    justify-content: center;
+}
+
+.remember_label {
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    &>span {
+        line-height: 1;
+    }
+}
+
+.required>label:after {
+    content: " *";
+    color: red;
+}
+
+@media (max-width: 768px) {
+    .sign_in {
+        margin-top: 10px
+    }
+
+    .sign_up {
+        margin: 8px;
+        padding: 12px;
+    }
+}

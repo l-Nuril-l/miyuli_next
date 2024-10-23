@@ -1,0 +1,165 @@
+.post_actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 13px 20px;
+    color: var(--text-secondary);
+}
+
+.post_buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.post_header {
+    padding: 15px 15px 0;
+    display: flex;
+}
+
+.post_body {
+    word-break: break-all;
+    padding: 8px 20px 0px;
+}
+
+.post_header_actions {
+    cursor: pointer;
+    position: relative;
+
+    &:hover {
+        .miyuli_dropdown {
+            display: block;
+            right: 0;
+        }
+    }
+}
+
+.attached_community {
+    display: flex;
+    align-items: center;
+}
+
+.post_action_btn {
+    display: none;
+    background-color: var(--background-highlighted);
+    border-radius: 32px;
+    padding: 4px 12px;
+    font-size: 15px;
+    line-height: 1;
+    gap: 3px;
+    margin: auto;
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+}
+
+.post_views {
+    display: flex;
+    line-height: 1;
+    align-items: center;
+    gap: 5px;
+}
+
+.comment_body {
+    padding: 5px 0 5px 0;
+    border-top: 1px var(--separator-common) solid;
+    width: 100%;
+}
+
+.post_author {
+    flex-grow: 1;
+}
+
+.comment_author {
+    line-height: 1;
+}
+
+.comment:first-child {
+    .comment_body {
+        border-top: initial;
+    }
+}
+
+
+
+.comment_box_wrapper {
+    padding: 12px 0px 12px;
+    max-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.comment_input_wrapper {
+    flex-grow: 1;
+    position: relative;
+}
+
+.send_reply_btn {
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.post_comments {
+    margin: 0px 20px;
+}
+
+.input_reply {
+    color: var(--text-primary);
+    padding: 5px;
+    background-color: var(--background-hover);
+    width: 100%;
+    border-radius: var(--page-block-border-radius);
+    outline: 0;
+}
+
+.repost_container {
+
+    border-left: 2px solid var(--im_forward_line_tint);
+    padding-left: 12px;
+    margin: 5px 0 0 0;
+
+    .post_header {
+        padding: 0;
+    }
+
+    .post_body {
+        padding: 8px 0px 0px;
+    }
+
+    .image_holder {
+        display: flex;
+        flex: 1 0 100px;
+        min-width: 100px;
+        max-height: 300px;
+        cursor: pointer;
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            width: 100%;
+        }
+    }
+
+    .video_card_thumbnail {
+        max-height: initial;
+    }
+}
+
+.input_comment_actions {
+    position: absolute;
+    gap: 5px;
+    right: 10px;
+    top: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.moderation_zone {
+    background-color: var(--background-secondary);
+    border-radius: 0px 0px 50px 50px;
+    padding: 5px;
+    margin-top: -2px;
+    display: flex;
+    justify-content: space-around;
+}

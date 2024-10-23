@@ -1,0 +1,180 @@
+.modal .modal_photo {
+    flex-direction: row;
+    max-height: 100%;
+    min-height: 50vh;
+    border-radius: 5px;
+
+    .im_header {
+        background-color: var(--background-secondary);
+        border-radius: 0 5px 0 0;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .modal_left {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        justify-content: space-between;
+
+
+        .image_holder {
+            display: flex;
+            max-height: calc(100% - var(--header-height));
+            justify-content: center;
+            height: 100%;
+            align-items: center;
+            position: relative;
+
+            .deleted {
+                position: absolute;
+                padding: 25px;
+                top: 0;
+                right: 0;
+                left: 0;
+                z-index: 1;
+                text-align: center;
+                background-color: rgba($color: gray, $alpha: 0.4);
+            }
+
+            .pm_nav_btn {
+                position: absolute;
+                opacity: 0;
+                width: 20px;
+                height: 32px;
+                background-image: url(../../assets/pv_layer_controls.png);
+                cursor: pointer;
+                z-index: 1;
+                top: 50%;
+                translate: 0 -50%;
+                transition: opacity ease;
+                transition-duration: 300ms;
+
+                &-left {
+                    left: 30px;
+                    background-position: 0 -24px;
+                }
+
+                &-right {
+                    right: 30px;
+                    background-position: 0 -64px;
+                }
+            }
+
+            &:hover .pm_nav_btn {
+                opacity: .3;
+
+                &-active {
+                    opacity: 1;
+                }
+            }
+
+            .modal_image {
+                max-height: 100%;
+                max-width: 100%;
+            }
+        }
+
+        .pm_bottom_info {
+            padding: 17px 23px 14px;
+            line-height: 1;
+            display: flex;
+            justify-content: space-between;
+
+            @media screen and (max-width: 479px) {
+                .divider {
+                    display: none;
+                }
+
+                .pm_bottom_actions {
+                    text-align: end;
+                    flex-direction: column;
+                    width: 100%;
+                }
+
+            }
+
+            .pm_bottom_actions {
+                color: var(--text-secondary);
+                display: flex;
+                justify-content: right;
+            }
+
+            .pm_bottom_action:hover {
+                cursor: pointer;
+                color: var(--text-primary);
+            }
+
+            .divider {
+                margin-left: 15px;
+
+                &::before {
+                    position: relative;
+                    left: -8px;
+                    content: '\00b7';
+                }
+            }
+        }
+    }
+
+    .modal_right {
+        justify-content: space-between;
+        display: flex;
+        flex-direction: column;
+        min-width: 250px;
+        max-width: max(300px, 30vw);
+        background-color: var(--background-primary);
+
+
+        .scroll {
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .pm_actions {
+            border-bottom: 1px solid var(--separator-common);
+            border-top: 1px solid var(--separator-common);
+            display: flex;
+            margin-bottom: 10px;
+            padding: 0px 10px;
+        }
+
+        .pm_description {
+            padding: 0px 10px;
+        }
+
+        .pm_comments_wrap {
+            padding: 0px 10px;
+        }
+    }
+
+
+
+    @media (max-width: 768px) {
+
+        .modal_image {
+            max-height: calc(100vh - var(--header-height));
+        }
+
+        max-height: initial;
+        display: block;
+
+        .modal_right {
+            max-width: initial;
+
+            .im_header,
+            .mv_create_comment>* {
+                border-radius: 0;
+            }
+        }
+    }
+
+    .photo_date {
+        color: var(--text-secondary);
+    }
+}
+
+.max-vh-100 {
+    max-height: calc(100vh - var(--header-height));
+}

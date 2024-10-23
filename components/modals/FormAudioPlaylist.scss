@@ -1,0 +1,72 @@
+.modal_form_audioplaylist {
+    max-height: 100%;
+
+    .modal_body {
+        overflow: hidden;
+    }
+
+    .playlist_header {
+        gap: 20px;
+        padding: 15px;
+
+        .header_playlist_info {
+            padding: 0;
+        }
+    }
+
+    .ape_check {
+        width: 52px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        &>* {
+            line-height: 1;
+        }
+    }
+
+    .ape_audio_item_wrap {
+        display: flex;
+    }
+
+    .playlist_add_audios {
+        &:hover {
+            background-color: var(--background-hover);
+        }
+
+        border-bottom: 1px solid var(--separator-common);
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .playlist_body {
+        padding: 10px 5px;
+        overflow: auto;
+    }
+
+    .header_playlist_cover {
+        position: relative;
+        cursor: pointer;
+
+        &:hover .remove_cover {
+            display: flex;
+        }
+
+        .remove_cover {
+            position: absolute;
+            display: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            top: 0;
+            right: 0;
+            width: 15px;
+            height: 15px;
+            font-size: 8px;
+            line-height: 1;
+            background-color: rgba(0, 0, 0, 0.3333333333);
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}

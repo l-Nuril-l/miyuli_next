@@ -1,0 +1,217 @@
+@import url(../styles/root_colors.scss);
+@import url(./App.scss);
+@import url(../components/Header.scss);
+
+//disable bootstrap smooth scrolling, fix STT
+html {
+  scroll-behavior: auto !important;
+}
+
+@mixin light {
+  --background-primary: #edeef0;
+  --background-secondary: white;
+  --background-primary-variant: rgb(245, 245, 245);
+  --background-hover: rgb(245 245 245);
+  --background-highlighted: rgba(174, 183, 194, 0.25);
+  --text-primary: black;
+  --text-secondary: rgb(136, 136, 136);
+  --separator-common: rgb(200, 200, 200);
+  --separator-alternate: #e7e8ec;
+  --separator-dark: rgb(190, 190, 190);
+  --page-block-shadow: 0 1px 0 0 var(--separator-common), 0 0 0 1px var(--separator-alternate);
+  --modal-card-background: white;
+  --modal-card-border: white;
+  --button-secondary-background: #e5ebf1;
+  --button-secondary-foreground: #55677d;
+  --button-hover-background: #dde8f3;
+  --background-hover-row: #e5ebf1;
+  --separator-common: #eeeeee;
+  --svg-color: #71aaeb;
+  --svg-active: #828282;
+  --side-bar: black;
+  --scrollbar: #eeeeee;
+  --scrollbar-thumb: rgb(201, 201, 201);
+  --text-link: #71aaeb;
+  --placeholder_icon_background: var(--white_alpha8);
+  --icon-primary: #828282;
+  --icon-secondary: #939393;
+  --content_tint_background: #f0f2f5;
+  --black_alpha24: rgba(0, 0, 0, 0.24);
+  --im_forward_line_tint: var(--black_alpha24);
+}
+
+@mixin dark {
+  --header-height: 48px;
+  --layout-width: 960px;
+  --background-primary: rgb(34, 34, 38);
+  --background-primary-variant: rgb(67 66 70);
+  --background-secondary: rgb(51, 51, 54);
+  --background-secondary-variant: rgb(76, 76, 82);
+  --background-hover: rgb(67, 67, 70);
+  --background-highlighted: rgb(75, 75, 77);
+  --text-primary: white;
+  --text-secondary: rgb(136, 136, 136);
+  --page-block-border-radius: 4px;
+  --modal-card-background: #555556;
+  --modal-card-border: gray;
+  --button-secondary-background: #5e5e5e;
+  --button-hover-background: #505050;
+  --background-hover-row: #777777;
+  --separator-common: rgb(80, 80, 80);
+  --separator-alternate: transparent;
+  --separator-dark: rgb(31, 30, 30);
+  --page-block-shadow: 0px 0px 1px 1px var(--background-primary-variant);
+  --page-block-shadow: 0;
+  --button-secondary-foreground: white;
+  --svg-color: rgb(150, 148, 148);
+  --svg-active: #ddd;
+  --side-bar: rgb(150, 148, 148);
+  --input-border: rgb(160, 160, 160);
+  --scrollbar-thumb: #555;
+  --scrollbar: #303030;
+  --modal-background: #00000075;
+  --text-link: white;
+  --image-border: rgba(255, 255, 255, 0.08);
+  --placeholder_icon_background: #444446;
+  --icon-primary: #828282;
+  --icon-secondary: #b2b2b2;
+  --button_commerce_background: #4bb34b;
+  --content_tint_background: #333333;
+  --im_forward_line_tint: rgba(255, 255, 255, 0.24);
+  --red: #e64646;
+  --red_dark: #db3b3b;
+  --red_light: #ff5c5c;
+  --red_nice: #ff3347;
+}
+
+:root {
+  @include dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    @include light;
+  }
+}
+
+.light {
+  @include light;
+}
+
+.dark {
+  @include dark;
+}
+
+.amoled {
+  --background-primary: black;
+  --background-secondary: #000000;
+  --background-primary-variant: #0a0a0a;
+  --background-hover: #121212;
+  --background-highlighted: #222222;
+  --text-primary: white;
+  --text-secondary: rgb(136, 136, 136);
+  --page-block-border-radius: 4px;
+  --modal-card-background: black;
+  --modal-card-border: var(--separator-dark);
+  --button-secondary-background: #5e5e5e;
+  --button-hover-background: #505050;
+  --background-hover-row: var(--background-hover);
+  --separator-common: rgb(30 30 30);
+  --separator-alternate: transparent;
+  --separator-dark: rgb(30, 30, 30);
+  --page-block-shadow: 0px 0px 1px 1px var(--background-primary-variant);
+  --button-secondary-foreground: white;
+  --svg-color: rgb(150, 148, 148);
+  --svg-active: rgb(150, 148, 148);
+  --side-bar: rgb(150, 148, 148);
+  --input-border: rgb(160, 160, 160);
+  --scrollbar-thumb: #555;
+  --scrollbar: #303030;
+  --modal-background: #00000075;
+  --text-link: white;
+  --image-border: rgba(255, 255, 255, 0.08);
+  --placeholder_icon_background: #444446;
+  --icon-primary: #828282;
+  --icon-secondary: #b2b2b2;
+  --button_commerce_background: #4bb34b;
+  --content_tint_background: #333333;
+  --im_forward_line_tint: rgba(255, 255, 255, 0.24);
+}
+
+em-emoji-picker {
+  right: 0;
+  position: absolute;
+  --rgb-background: 67 66 70;
+  --font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
+  height: 50vh;
+  --category-icon-size: 24px;
+  min-height: 400px;
+  max-height: 800px;
+  --font-size: 20px;
+  --rgb-input: 90 90 90;
+  z-index: 1;
+}
+
+.light em-emoji-picker {
+  --background-rgb: 85, 170, 255;
+  --border-radius: 24px;
+  --color-border-hover: rgba(0, 0, 0, 0.1);
+  --color-border: rgba(0, 0, 0, 0.05);
+  --rgb-accent: 255, 105, 180;
+  --rgb-background: 262, 240, 283;
+  --rgb-color: 102, 51, 153;
+  --rgb-input: 255, 235, 235;
+  --shadow: 5px 5px 15px -8px rebeccapurple;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--text-primary);
+  background-color: var(--background-primary);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+ol,
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+  margin: 0;
+}
+
+a {
+  color: var(--text-link);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--text-link);
+  text-decoration: underline;
+}
+
+p {
+  margin: 0;
+}
+
+hr {
+  color: var(--separator-common);
+  opacity: 1;
+}
