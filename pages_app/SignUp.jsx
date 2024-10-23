@@ -11,7 +11,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { GoogleLogin } from '@react-oauth/google';
 import classNames from 'classnames';
 import { useTranslations } from 'next-intl';
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
@@ -125,7 +124,7 @@ export default function SignUp() {
             <PageBlock className="sign_up">
                 <div>
                     <div>
-                        <div className='text-center'><Image width={50} height={50} className="logo" src="/miyuli.purple-50.png" alt="logo" /></div>
+                        <div className='text-center'><img className="logo" src="/miyuli.purple-50.png" alt="logo" /></div>
                         <div className='h2 text-center'>
                             <span className='logo_text mx-3'>MIYULI</span>
                         </div>

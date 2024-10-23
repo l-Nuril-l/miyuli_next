@@ -7,7 +7,6 @@ import { handleCommonErrorCases } from '@/lib/functions';
 import { useAppDispatch } from '@/lib/hooks';
 import "@/styles/Auth.scss";
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
 import Link from "next/link";
 import { useEffect, useState } from 'react';
 
@@ -30,7 +29,7 @@ export default function ResetPassword() {
     return (
         <div>
             <PageBlock className="page_block sign_in reset_password">
-                <div className="form_logo"><Image width={50} height={50} className="logo" src="/miyuli.purple-50.png" alt="logo" /></div>
+                <div className="form_logo"><img className="logo" src="/miyuli.purple-50.png" alt="logo" /></div>
                 <h2 className="login_header">{t('passwordRecovery')}</h2>
                 {reset && <div className="msg ok_msg">
                     <div className="msg_text">{t("resetMsgSentIfAccExists")}</div>
