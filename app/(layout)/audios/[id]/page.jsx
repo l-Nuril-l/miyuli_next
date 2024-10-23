@@ -1,7 +1,7 @@
-import Audio from '@/pages/Audio'
+import Audio from '@/pages_app/Audio'
 import React from 'react'
 
-export default function () {
+export default function Page() {
     return (
         <Audio />
     )

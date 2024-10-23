@@ -1,7 +1,7 @@
 'use client'
 import { useAppSelector } from "@/lib/hooks";
 import { setCookie } from "cookies-next";
-import { setTokenCookie } from "../page";
+import { setTokenCookie } from "./dev/page";
 
 export default function Button() {
     const store = useAppSelector((x) => x.theme);

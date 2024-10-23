@@ -1,7 +1,7 @@
+import Admin from '@/pages_app/Admin'
 import React from 'react'
-import Admin from '../../../pages/Admin'
 
-export default function () {
+export default function Page() {
     return (
         <Admin />
     )

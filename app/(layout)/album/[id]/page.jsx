@@ -1,7 +1,7 @@
-import Album from '@/pages/Album'
+import Album from '@/pages_app/Album'
 import React from 'react'
 
-export default function () {
+export default function Page() {
     return (
         <Album />
     )

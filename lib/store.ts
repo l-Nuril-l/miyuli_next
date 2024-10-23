@@ -16,7 +16,7 @@ import searchReducer from "@/lib/features/search";
 import themeReducer, { getThemeInitialState } from "@/lib/features/theme";
 import todoReducer from "@/lib/features/todo";
 import videoReducer from "@/lib/features/video";
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { createLogger } from 'redux-logger';
 import { handleUnauthorizedMiddleware } from "./middlewares/handleUnauthorizedMiddleware";
 
@@ -30,7 +30,7 @@ export const makeStore = (storeInitialValues: StoreInitialVlaues) => {
     const themeIS = getThemeInitialState();
     const authIS = getAuthInitialState();
     return configureStore({
-        reducer: {
+        reducer: combineReducers({
             todo: todoReducer,
             account: accountReducer,
             theme: themeReducer,
@@ -48,7 +48,7 @@ export const makeStore = (storeInitialValues: StoreInitialVlaues) => {
             search: searchReducer,
             call: callReducer,
             miyuli: miyuliReducer,
-        },
+        }),
         preloadedState: {
             auth: getAuthInitialState(auth),
             theme: getThemeInitialState(theme),

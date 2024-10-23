@@ -1,7 +1,7 @@
+import Messenger from '@/pages_app/Messenger'
 import React from 'react'
-import Messenger from '../../../../pages/Messenger'
 
-export default function () {
+export default function Page() {
     return (
         <Messenger />
     )

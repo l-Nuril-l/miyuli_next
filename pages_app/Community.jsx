@@ -52,7 +52,7 @@ const Community = () => {
             dispatch(disposeCommunity());
             dispatch(disposePosts());
         }
-    }, [dispatch, id, authStore, communityStore.errors.main]);
+    }, [dispatch, id, authStore, router, communityStore.errors.main]);
 
     const SubscribeHandler = () => {
         dispatch(community.isSubscribed ? cancelCommunityRequest(id) : sendCommunityRequest(id))

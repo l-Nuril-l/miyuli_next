@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import "@/styles/Auth.scss";
 import { GoogleLogin } from '@react-oauth/google';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
@@ -44,7 +45,7 @@ export default function SignIn() {
     return (
         <div>
             <PageBlock className="page_block sign_in">
-                <div className="form_logo"><img className="logo" src="/miyuli.purple-50.png" alt="logo" /></div>
+                <div className="form_logo"><Image width={50} height={50} className="logo" src="/miyuli.purple-50.png" alt="logo" /></div>
                 <h2 className="login_header">MIYULI</h2>
                 <div id="login_message">
                     {authStore?.rejected ? <Alert key="errors" variant="danger">

@@ -7,8 +7,6 @@ import { useEffect } from 'react';
 import useAdminPermissionsCheck from '../hooks/useAdminPermissionsCheck';
 import './PostsModeration.scss';
 
-
-
 const PostsModeration = () => {
     const dispatch = useAppDispatch()
     const postStore = useAppSelector(s => s.posts)

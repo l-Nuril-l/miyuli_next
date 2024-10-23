@@ -37,6 +37,7 @@ const FormAudioPlaylist = (props) => {
     const onClose = () => dispatch(closeEditPlaylistModal(false));
 
     useEffect(() => {
+        const onClose = () => dispatch(closeEditPlaylistModal(false));
         if (audioStore.showFormPlaylistModal < 1) {
             return;
         }
@@ -52,7 +53,7 @@ const FormAudioPlaylist = (props) => {
             dispatch(clearPlaylist())
             promise?.abort();
         };
-    }, [dispatch, audioStore.showFormPlaylistModal, onClose]);
+    }, [dispatch, audioStore.showFormPlaylistModal]);
 
     const formAction = () => {
         var action = audioStore.showFormPlaylistModal === 0 ? createAudioPlaylist : editAudioPlaylist;
@@ -171,7 +172,7 @@ const FormAudioPlaylist = (props) => {
                         <div className="header_playlist_cover" onClick={() => selectFile()}>
                             {playlist.coverId > 0 || playlist.cover ?
                                 <>
-                                    <img className='playlist_cover' alt="PlaylistImg" src={playlist.cover ? playlist.cover : API_URL + "photo/" + playlist.coverId}></img>
+                                    <img className='playlist_cover' alt="PlaylistImg" src={playlist.cover ? playlist.cover : API_URL + "photo/" + playlist.coverId} />
                                     <div className="remove_cover" onClick={(e) => {
                                         setCover(null)
                                         setPlaylist((prev) => ({

@@ -1,7 +1,7 @@
+import Settings from '@/pages_app/Settings'
 import React from 'react'
-import Settings from '../../../pages/Settings'
 
-export default function () {
+export default function Page() {
     return (
         <Settings />
     )

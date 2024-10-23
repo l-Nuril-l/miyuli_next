@@ -1,12 +1,15 @@
-.unknown_page{
+.unknown_page {
     text-align: center;
-    .btn_back{
+
+    .btn_back {
         width: 200px;
         margin: auto;
         margin-bottom: 50px;
     }
-    .trouble_image{
+
+    .trouble_image {
         max-height: 50vh;
         max-width: 100%;
+        margin: auto;
     }
 }

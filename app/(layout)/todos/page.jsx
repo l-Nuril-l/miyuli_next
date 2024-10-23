@@ -1,7 +1,7 @@
-import Todo from '@/pages/Todo'
+import Todo from '@/pages_app/Todo'
 import React from 'react'
 
-export default function () {
+export default function Page() {
     return (
         <Todo />
     )

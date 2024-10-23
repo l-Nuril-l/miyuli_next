@@ -1,4 +1,4 @@
-import SetNewPassword from '@/pages/SetNewPassword'
+import SetNewPassword from '@/pages_app/SetNewPassword'
 import React from 'react'
 
 export default function Page() {

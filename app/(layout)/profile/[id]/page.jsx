@@ -1,7 +1,7 @@
+import Profile from '@/pages_app/Profile'
 import React from 'react'
-import Profile from '../../../../pages/Profile'
 
-export default function () {
+export default function Page() {
     return (
         <Profile />
     )

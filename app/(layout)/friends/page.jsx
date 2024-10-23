@@ -1,7 +1,7 @@
+import Friends from '@/pages_app/Friends'
 import React from 'react'
-import Friends from '../../../pages/Friends'
 
-export default function () {
+export default function Page() {
     return (
         <Friends />
     )

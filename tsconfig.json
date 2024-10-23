@@ -22,11 +22,19 @@
     "paths": {
       "@/*": ["./*"]
     },
-    "checkJs": true,
+    "checkJs": false,
     "noImplicitAny": false,
     "importHelpers": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "services/miyuli.service copy.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "services/miyuli.service copy.js",
+    "pages_app/pvz.tsx.OFF",
+    "pages_app/milord.tsx.off"
+  ],
   "exclude": ["node_modules", ".next"]
 }

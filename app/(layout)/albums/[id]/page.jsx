@@ -1,7 +1,7 @@
-import Photos from '@/pages/Photos'
+import Photos from '@/pages_app/Photos'
 import React from 'react'
 
-export default function () {
+export default function Page() {
     return (
         <Photos />
     )

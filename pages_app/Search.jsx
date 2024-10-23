@@ -58,7 +58,7 @@ const Search = () => {
             Object.values(promises).forEach(x => x.abort());
             dispatch(disposeSearch())
         };
-    }, [dispatch, debouncedSearch, section, searchStore.errors.search]);
+    }, [dispatch, debouncedSearch, section, searchStore.errors.search, searchParamText, setSearchParamText]);
 
     return (
         <div className="search_page">

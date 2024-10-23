@@ -67,7 +67,7 @@ export default function Profile({ profile }) {
                 router.push('unknown')
         });
         return cleanup;
-    }, [dispatch, id, profileStore.errors.main]);
+    }, [dispatch, id, profileStore.errors.main, router]);
 
     useEffect(() => {
         return () => {

@@ -6,9 +6,11 @@ import Search from '@/components/header/Search';
 import { useAppSelector } from '@/lib/hooks';
 import classNames from "classnames";
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useMediaQuery } from 'react-responsive';
+import './Header.scss';
 import Navigation from './header/Navigation';
 const Header = (props) => {
     const { wide: isWide, navigation: nav, width } = props;
@@ -24,14 +26,14 @@ const Header = (props) => {
         if (isVideo)
             return <li className='header_nav_logo'>
                 <Link href="/video" className='d-flex h_100 align-items-center'>
-                    <img className='logo' src="/miyuli.purple-50.png" alt='logo' />
+                    <Image width={50} height={50} className='logo' src="/miyuli.purple-50.png" alt='logo' />
                     <h4 className='logo_text'>VIDEO</h4>
                 </Link>
             </li>
 
         return <li className='header_nav_logo'>
             <Link href="/" className='d-flex h_100 align-items-center'>
-                <img className='logo' src="/miyuli.purple-50.png" alt='logo' />
+                <Image width={50} height={50} className='logo' src="/miyuli.purple-50.png" alt='logo' />
                 <h4 className='logo_text'>MIYULI</h4>
             </Link>
         </li>

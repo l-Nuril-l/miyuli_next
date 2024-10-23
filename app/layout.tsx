@@ -3,7 +3,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import { getLocale } from "next-intl/server";
 import { Inter } from "next/font/google";
+import "../styles/root_colors.scss";
 import Providers from "./_providers/providers";
+import "./App.scss";
 import "./globals.css";
 import "./index.scss";
 

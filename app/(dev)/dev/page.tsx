@@ -2,7 +2,7 @@
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { cookies, headers } from "next/headers";
-import Button from "./(dev)/button";
+import Button from "../button";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {

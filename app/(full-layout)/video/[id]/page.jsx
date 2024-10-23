@@ -1,5 +1,5 @@
 import { metadataExtractor } from '@/lib/functions';
-import Video from "@/pages/Video";
+import Video from "@/pages_app/Video";
 import React from 'react';
 
 export async function generateMetadata({ params, searchParams }) {

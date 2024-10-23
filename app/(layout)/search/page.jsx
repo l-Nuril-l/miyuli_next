@@ -1,7 +1,7 @@
+import Search from '@/pages_app/Search'
 import React from 'react'
-import Search from '../../../pages/Search'
 
-export default function () {
+export default function Page() {
     return (
         <Search />
     )

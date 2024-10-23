@@ -1,4 +1,4 @@
-import CommunitySettings from '@/pages/CommunitySettings'
+import CommunitySettings from '@/pages_app/CommunitySettings'
 import React from 'react'
 
 export default function Page() {

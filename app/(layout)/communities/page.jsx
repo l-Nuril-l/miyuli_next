@@ -1,7 +1,7 @@
+import Communities from '@/pages_app/Communities'
 import React from 'react'
-import Communities from '../../../pages/Communities'
 
-export default function () {
+export default function Page() {
     return (
         <Communities />
     )

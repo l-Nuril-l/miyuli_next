@@ -30,7 +30,7 @@ const MessageEditing = ({ onAction, message }) => {
             <TextareaAutosize className='input input_message' type="text" value={text} placeholder={t("writeMsg")}
                 onChange={(e) => setText(e.target.value)} onKeyDown={handleKeyDown} />
             <EmojiPicker absolute value={text} onChange={setText} />
-            <div>esc {t('for')} <a href="/#" onClick={(e) => { e.preventDefault(); onAction() }}>{t('cancel')}</a> • enter {t('for')} <a href="/#" onClick={(e) => { e.preventDefault(); onSave() }}>{t('save')}</a></div>
+            <div>esc {t('for')} <span className='hover:underline' onClick={(e) => { e.preventDefault(); onAction() }}>{t('cancel')}</span> • enter {t('for')} <span className='hover:underline' onClick={(e) => { e.preventDefault(); onSave() }}>{t('save')}</span></div>
         </div>
     );
 }

@@ -36,7 +36,7 @@ const VideoModal = () => {
         let videoId = params?.[1];
         setIsOpen(true);
         dispatch(getVideo(videoId))
-    }, [dispatch]);
+    }, [dispatch, params]);
 
     const onClose = useCallback(() => {
         setIsOpen(false)
