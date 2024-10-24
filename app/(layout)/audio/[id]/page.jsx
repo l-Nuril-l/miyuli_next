@@ -1,6 +1,6 @@
 import { metadataExtractor, staticMetadataExtractor } from '@/lib/functions';
 import { MiyuliService } from '@/services/miyuli.service';
-import { redirect } from 'next/navigation';
+import Link from 'next/link';
 
 export async function generateMetadata({ params, searchParams }) {
     const audio = await MiyuliService.getAudio((await params).id);
@@ -10,5 +10,9 @@ export async function generateMetadata({ params, searchParams }) {
     }
 }
 export default function Page() {
-    redirect('/audios');
+    <div>
+        METADATA ONLY PAGE
+        <Link href={'/audios'}>AUDIOS</Link>
+        <Link href={'/'}>MAIN</Link>
+    </div>
 }
