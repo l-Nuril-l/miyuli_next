@@ -28,6 +28,14 @@ export const MiyuliService = {
       throw axiosErrorToRejectValue(error);
     }
   }),
+  getAudio: (async (id) => {
+    try {
+      const response = await axios.get(`audio/${id}`);
+      return response.data;
+    } catch (error) {
+      throw axiosErrorToRejectValue(error);
+    }
+  }),
   getAudioPlaylist: (async (id) => {
     try {
       const response = await axios.get(`audio/getPlaylistAudio/${id}`);

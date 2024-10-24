@@ -1,4 +1,4 @@
-import { metadataExtractor } from '@/lib/functions';
+import { metadataExtractor, staticMetadataExtractor } from '@/lib/functions';
 import Profile from '@/pages_app/Profile';
 import { MiyuliService } from '@/services/miyuli.service';
 import React from 'react';
@@ -6,8 +6,7 @@ import React from 'react';
 export async function generateMetadata({ params, searchParams }) {
     const profile = await MiyuliService.getAccount((await params).id);
     return {
-        title: "MIYULI | " + profile.name + ' ' + profile.surname,
-        description: profile.status + ' ' + profile.bio,
+        ...staticMetadataExtractor('profile', profile),
         ...(await metadataExtractor((await searchParams).z))
     }
 }
