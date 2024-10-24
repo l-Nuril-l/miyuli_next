@@ -32,7 +32,7 @@ const VideoModal = () => {
     useEffect(() => {
         let params = videoStore.forceVideoModal ? videoStore.forceVideoModal.split("_") : searchParamZ?.split("_");
         let videoId = params?.[1];
-
+        if (!videoId) return;
         setIsOpen(true);
         dispatch(getVideo(videoId))
     }, [dispatch, videoStore.forceVideoModal, searchParamZ]);
