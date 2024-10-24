@@ -7,6 +7,7 @@ export async function generateMetadata({ params, searchParams }) {
     const profile = await MiyuliService.getAccount((await params).id);
     return {
         title: "MIYULI | " + profile.name + ' ' + profile.surname,
+        description: profile.status + ' ' + profile.bio,
         ...(await metadataExtractor((await searchParams).z))
     }
 }
