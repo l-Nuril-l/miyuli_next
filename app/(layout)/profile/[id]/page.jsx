@@ -1,3 +1,4 @@
+import { metadataExtractor } from '@/lib/functions';
 import Profile from '@/pages_app/Profile';
 import { MiyuliService } from '@/services/miyuli.service';
 import React from 'react';
