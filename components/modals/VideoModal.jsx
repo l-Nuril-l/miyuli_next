@@ -29,14 +29,13 @@ const VideoModal = () => {
     const locale = useLocale();
     const [shareModalVisible, setShareModalVisible] = useState(false);
 
-    let params = videoStore.forceVideoModal ? videoStore.forceVideoModal.split("_") : searchParamZ?.split("_");
-
-
     useEffect(() => {
+        let params = videoStore.forceVideoModal ? videoStore.forceVideoModal.split("_") : searchParamZ?.split("_");
         let videoId = params?.[1];
+
         setIsOpen(true);
         dispatch(getVideo(videoId))
-    }, [dispatch, params]);
+    }, [dispatch, videoStore.forceVideoModal, searchParamZ]);
 
     const onClose = useCallback(() => {
         setIsOpen(false)
