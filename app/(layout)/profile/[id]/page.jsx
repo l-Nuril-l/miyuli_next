@@ -1,4 +1,6 @@
+import Profile from '@/pages_app/Profile';
 import { MiyuliService } from '@/services/miyuli.service';
+import React from 'react';
 
 export async function generateMetadata({ params, searchParams }) {
     const profile = await MiyuliService.getAccount((await params).id);
