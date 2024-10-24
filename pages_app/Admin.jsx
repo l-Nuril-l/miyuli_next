@@ -30,15 +30,15 @@ const Admin = () => {
                         AXIOS
                     </div>
                     <div className="mlg" onClick={() => {
-                        axios.defaults.baseURL = "https://miyulibackend.pp.ua/api"
-                        dispatch(switchAPI("https://miyulibackend.pp.ua/api"))
+                        axios.defaults.baseURL = "https://miyulibackend.pp.ua/api/"
+                        dispatch(switchAPI("https://miyulibackend.pp.ua/api/"))
                     }}>
                         <span /><span /><span /><span />
                         BACKEND_L2P
                     </div>
                     <div className="mlg" onClick={() => {
-                        axios.defaults.baseURL = "https://localhost:7284/api"
-                        dispatch(switchAPI("https://localhost:7284/api"))
+                        axios.defaults.baseURL = "https://localhost:7284/api/"
+                        dispatch(switchAPI("https://localhost:7284/api/"))
                     }}>
                         <span /><span /><span /><span />
                         BACKEND_P2L
