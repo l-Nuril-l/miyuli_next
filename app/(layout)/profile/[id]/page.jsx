@@ -14,6 +14,6 @@ export async function generateMetadata({ params, searchParams }) {
 export default async function Page({ params }) {
     const profile = await MiyuliService.getAccount((await params).id);
     return (
-        <Profile />
+        <Profile profile={profile} />
     )
 }
