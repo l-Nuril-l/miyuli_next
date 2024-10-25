@@ -44,4 +44,11 @@ export const MiyuliService = {
       throw axiosErrorToRejectValue(error); // Обработка ошибок, если нужно
     }
   }),
+  getSelf: async () => {
+    return axios.post(`auth/self`).then((r) => {
+      return r.data;
+    }).catch(e => {
+      return axiosErrorToRejectValue(e)
+    });
+  }
 };

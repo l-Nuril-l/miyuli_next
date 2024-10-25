@@ -5,6 +5,14 @@ const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    async rewrites() {
+        return [
+            {
+                source: '/id:slug(\\d+)', // Маршрут начинается с 'id' и за ним следует число
+                destination: '/id/:slug', // Перенаправление на динамический маршрут
+            },
+        ];
+    },
     images: {
         remotePatterns: [
             {

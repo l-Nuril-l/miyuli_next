@@ -27,8 +27,6 @@ const logger = createLogger({
 
 export const makeStore = (storeInitialValues: StoreInitialVlaues) => {
     const { isMobileDevice, auth, theme } = storeInitialValues;
-    const themeIS = getThemeInitialState();
-    const authIS = getAuthInitialState();
     return configureStore({
         reducer: combineReducers({
             todo: todoReducer,

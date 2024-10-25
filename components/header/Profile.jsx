@@ -1,4 +1,6 @@
 "use client";
+import "./Profile.scss";
+
 import { logout } from '@/lib/features/auth';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { useTranslations } from 'next-intl';
@@ -9,7 +11,6 @@ import useClickOutside from "../../hooks/useClickOutside";
 import Avatar from '../Avatar';
 import ChangeLanguage from './ChangeLanguage';
 import ChangeTheme from './ChangeTheme';
-import "./Profile.scss";
 
 export const CustomToggle = (className) => {
     const res = React.forwardRef(({ children, onClick }, ref) => (

@@ -6,7 +6,10 @@ import { AppStore, makeStore } from "../../lib/store";
 export type StoreInitialVlaues = {
   isMobileDevice: boolean;
   theme: string | undefined;
-  auth: string | undefined;
+  auth: {
+    session: any;
+    account: any;
+  };
 };
 
 export default function StoreProvider({ children, storeInitialValues }: { children: React.ReactNode; storeInitialValues: StoreInitialVlaues }) {

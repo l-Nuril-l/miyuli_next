@@ -27,7 +27,7 @@ import './Profile.scss';
 
 export default function Profile({ profile }) {
     const store = useAppStore()
-    const initialized = useRef(0)
+    const initialized = useRef(0) // profile ? 0 : 2
     if (initialized.current === 0) {
         store.dispatch(initializeProfile(profile))
         initialized.current = 1

@@ -30,7 +30,7 @@ const AudioCard = ({ audio, off, authorId, playlistId, search, access }) => {
         {x.imageId == null ?
           <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="song_24__Page-2" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd"><g id="song_24__song_24"><path id="song_24__Bounds" d="M0 0h24v24H0z"></path><path d="M13 11.48v5.65c0 4.52-.87 5.39-4.37 5.85C6.96 23.19 5 22.44 5 19.8c0-1.28.8-2.5 2.46-2.81 1.27-.25-.09.02 2.78-.52.7-.13.77-.37.77-.9V7.05 3.98c0-1.24.67-1.69 2.66-2.09l4.68-.87c.37-.07.65.07.65.49v4.05c0 .42-.17.6-.59.68l-4.86.86c-.38.1-.55.36-.55.74v3.64z" id="song_24__Mask" fill="currentColor"></path></g></g></svg>
           :
-          <Image alt='AudioPicture' src={API_URL + "audio/picture/" + x.imageId} width='40' height='40' />
+          <Image alt='AudioPicture' src={API_URL + "audio/picture/" + x.imageId} width='32' height='40' />
         }
       </div>
       <div className={`audio_data`}>

@@ -6,12 +6,11 @@ import "./globals.css";
 
 import "./index.scss";
 
-import "./App.scss";
-
 import axios from "axios";
 import { getLocale } from "next-intl/server";
 import { Inter } from "next/font/google";
 import Providers from "./_providers/providers";
+import "./App.scss";
 
 const inter = Inter({ subsets: ["latin"] });
 

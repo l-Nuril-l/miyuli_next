@@ -829,3 +829,9 @@ aside:hover a,
   display: flex;
   padding: 15px;
 }
+
+.show {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}

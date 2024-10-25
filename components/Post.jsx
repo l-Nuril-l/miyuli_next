@@ -68,7 +68,7 @@ const Post = (props) => {
                 <Avatar crop={post.author?.avatarCrop} className="avatar_element" size={50} avatar={post.author?.avatar} onClick={() => router.push(`/id/${post.authorId}`)}> </Avatar>
                 <div className='post_author'>
                     <div className='post_author_name' onClick={() => router.push(`/id/${post.authorId}`)}>
-                        <Link href={`/id${post.authorId}`}>{post.author?.name} {post.author?.surname}</Link>
+                        <Link href={`/id/${post.authorId}`}>{post.author?.name} {post.author?.surname}</Link>
                     </div>
                     <div className='post_author_time'>{beautifyDate(postDate, t)}</div>
                 </div>
