@@ -325,5 +325,6 @@
   "year": "{count, plural, =0 {років} one {рік} few {роки} many {років} other {# років}}",
   "comment": "{count, plural, =0 {коментарів} one {коментар} few {коментарі} many {коментарів} other {# коментарів}}",
   "view": "{count, plural, =0 {переглядів} one {перегляд} few {перегляди} many {переглядів} other {# переглядів}}",
-  "member": "{count, plural, =0 {учасників} one {учасник} few {учасники} many {учасників} other {# учасників}}"
+  "member": "{count, plural, =0 {учасників} one {учасник} few {учасники} many {учасників} other {# учасників}}",
+  "noPosts": "Тут ще немає публікацій."
 }

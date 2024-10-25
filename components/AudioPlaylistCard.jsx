@@ -46,7 +46,7 @@ const AudioPlaylistCard = ({ playlist }) => {
                 <Link href={`/audio/playlist/${playlist.id}`} onClick={(e) => { e.preventDefault(); setSearchParamZ(`audio_playlist/${playlist.author.id}_${playlist.id}`) }}>{playlist.title}</Link>
             </h6>
             <div className="playlist_author">
-                <Link href={`/audios/${playlist.author.id * (playlist.author.isCommunity ? -1 : 1)}`}>{playlist.author.name}</Link>
+                <Link href={`/audios${playlist.author.id * (playlist.author.isCommunity ? -1 : 1)}`}>{playlist.author.name}</Link>
             </div>
             {isSharing && <ShareModal attachedAudioPlaylistId={playlist.id} onClose={() => setIsSharing(false)}></ShareModal>}
         </div >

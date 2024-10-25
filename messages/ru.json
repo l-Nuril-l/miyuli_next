@@ -326,5 +326,6 @@
   "year": "{count, plural, =0 {лет} one {год} few {года} many {лет} other {# лет}}",
   "comment": "{count, plural, =0 {комментариев} one {комментарий} few {комментария} many {комментариев} other {# комментариев}}",
   "view": "{count, plural, =0 {просмотров} one {просмотр} few {просмотра} many {просмотров} other {# просмотров}}",
-  "member": "{count, plural, =0 {участников} one {участник} few {участника} many {участников} other {# участников}}"
+  "member": "{count, plural, =0 {участников} one {участник} few {участника} many {участников} other {# участников}}",
+  "noPosts": "Здесь пока нет публикаций."
 }

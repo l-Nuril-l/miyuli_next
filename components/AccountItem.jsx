@@ -3,7 +3,7 @@ import Avatar from "./Avatar";
 
 const AccountItem = ({ account, onCheck, state, disabled }) => {
     return (
-        <a href={'/' + (account.login ?? 'id/' + account.id)} className="list_item_wrap" onClick={(e) => { e.preventDefault(); onCheck(account.id, !state) }}>
+        <a href={'/' + (account.login ?? 'id' + account.id)} className="list_item_wrap" onClick={(e) => { e.preventDefault(); onCheck(account.id, !state) }}>
             <div className="list_item">
                 <div className="d-flex">
                     <div className="list_item_photo"><Avatar size={32} crop={account.avatarCrop} avatar={account.avatar}></Avatar></div>

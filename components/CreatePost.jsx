@@ -149,8 +149,6 @@ const CreatePost = (props) => {
             }
         </PageBlock >
 
-
-
     );
 }
 

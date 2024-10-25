@@ -14,7 +14,7 @@ const SignalR = ({ children }) => {
     const API_URL = useAppSelector((s) => s.miyuli.API_URL)
     const [connection, setConnection] = useState(null);
     useEffect(() => {
-        if (authStore.session?.access_token === null) return;
+        if (!authStore.session?.access_token) return;
         const retryTimes = [0, 3000, 10000, 60000];
         const connect = new HubConnectionBuilder()
             .withUrl(API_URL + "hub/messenger", { accessTokenFactory: () => authStore.session?.access_token })

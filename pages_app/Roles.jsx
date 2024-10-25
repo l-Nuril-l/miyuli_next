@@ -32,7 +32,7 @@ const Roles = () => {
                 <div className="d-flex gap-2 mb-2">
                     <PageBlock className="authorized_as_block w-100 p-2">
                         <div className="account_card">
-                            <Avatar className="avatar_element" size={50} crop={roleStore.account?.avatar} avatar={roleStore.account?.avatar} onClick={() => router.push(`/id/${roleStore.account.id}`)}> </Avatar>
+                            <Avatar className="avatar_element" size={50} crop={roleStore.account?.avatar} avatar={roleStore.account?.avatar} onClick={() => router.push(`/id${roleStore.account.id}`)}> </Avatar>
                             <div className='card_data'>
                                 <div>{roleStore.account?.name} {roleStore.account?.surname} <span className='label'>({t("itsYou")})</span></div>
                                 <div className="label">{roleStore.account?.email}</div>
@@ -68,7 +68,7 @@ const Roles = () => {
                 <div className='text-center'>{t("staff")}</div>
                 {roleStore.staff.map(x => <PageBlock key={x.id} className="p-2 mt-0 mb-2">
                     <div className="account_card">
-                        <Avatar className="avatar_element" size={50} crop={x.avatarCrop} avatar={x.avatar} onClick={() => router.push(`/id/${x.id}`)}> </Avatar>
+                        <Avatar className="avatar_element" size={50} crop={x.avatarCrop} avatar={x.avatar} onClick={() => router.push(`/id${x.id}`)}> </Avatar>
                         <div className='card_data'>
                             <div>{x.name} {x.surname} {x.id === authStore.session.id && <span className='label'>({t("itsYou")})</span>}</div>
                             <div className="label">{x.email}</div>

@@ -11,6 +11,14 @@ const nextConfig = {
                 source: '/id:slug(\\d+)', // Маршрут начинается с 'id' и за ним следует число
                 destination: '/id/:slug', // Перенаправление на динамический маршрут
             },
+            {
+                source: '/albums:slug(\\d+)', // Маршрут начинается с 'id' и за ним следует число
+                destination: '/albums/:slug', // Перенаправление на динамический маршрут
+            },
+            {
+                source: '/audios:slug(\\d+)', // Маршрут начинается с 'id' и за ним следует число
+                destination: '/audios/:slug', // Перенаправление на динамический маршрут
+            },
         ];
     },
     images: {
@@ -44,6 +52,8 @@ const nextConfig = {
     reactStrictMode: false,
     sassOptions: {
         includePaths: [path.join(__dirname)],
+        silenceDeprecations: ['legacy-js-api'],
+        compiler: "modern-compiler"
     },
     experimental: {
         turbo: {

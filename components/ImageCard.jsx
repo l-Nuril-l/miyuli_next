@@ -18,7 +18,7 @@ const ImageCard = (props) => {
 
     return (
         <div ref={ref} className={classNames('image_holder', className)} onClick={() => off ? {} : onClick ? onClick() : openPhotoHandler(image)}>
-            <img className='w-100 h-100 image_holder_img' alt="ImageCard" src={API_URL + "photo/" + image.id + '?' + new URLSearchParams(crop).toString()} />
+            <img className='w-100 h-100 image_holder_img' alt="ImageCard" src={API_URL + "photo/" + image.id + (crop ? ('?' + new URLSearchParams(crop).toString()) : '')} />
         </div>
     );
 }

@@ -53,7 +53,7 @@ export default function SignIn() {
                 </div>
                 <form className="login_form" onSubmit={(e) => {
                     e.preventDefault();
-                    dispatch(signIn({ identifier, password, expire })).unwrap().then(router.push("/"))
+                    dispatch(signIn({ identifier, password, expire })).unwrap().then(router.push("/feed"))
                 }}>
                     <input className="input w-100" minLength="5" maxLength="256" required name="login" autoComplete="username" value={identifier} onChange={e => setIdentifier(e.target.value)} type="text" placeholder={t('signInTypes')} />
                     <input className="input w-100 mt-1" minLength="8" maxLength="256" required name="password" autoComplete="password" value={password} onChange={e => setPassword(e.target.value)} type="password" placeholder={t('password')} />

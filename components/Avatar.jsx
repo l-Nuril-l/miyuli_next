@@ -16,7 +16,8 @@ const Avatar = ({ avatar, size = 32, className, open, onClick, children, crop })
 
     return (
         <div onClick={onClick} className={`avatar avatar_${size} ${className ? className : ""}`}>
-            {avatar?.id ? <Image width={size ?? 100} height={size ?? 100} className='avatar_image' onClick={(e) => handler(e)} alt="avatar" src={API_URL + "photo/" + avatar.id + '?' + new URLSearchParams(crop).toString()} /> :
+
+            {avatar?.id ? <Image width={size ?? 100} height={size ?? 100} className='avatar_image' onClick={(e) => handler(e)} alt="avatar" src={API_URL + "photo/" + avatar.id + (crop ? ('?' + new URLSearchParams(crop).toString()) : '')} /> :
                 <NoAvatar></NoAvatar>}
             {children}
         </div>

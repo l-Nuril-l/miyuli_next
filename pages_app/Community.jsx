@@ -171,7 +171,7 @@ const Community = () => {
                                     </div>
                                     <div className='profile_card_body'>
                                         {community.accounts?.map(x =>
-                                            <div key={x.id} className='people_cell' onClick={() => router.push(`/id/${x.id}`)}>
+                                            <div key={x.id} className='people_cell' onClick={() => router.push(`/id${x.id}`)}>
                                                 <Avatar size={50} crop={x.avatarCrop} className="people_cell_avatar" avatar={x.avatar}></Avatar>
                                                 <div className='people_cell_name'>{x.name}</div>
                                             </div>
@@ -183,7 +183,7 @@ const Community = () => {
                                         <span className='header_label'>{t("owner")}</span>
                                     </div>
                                     <div className='profile_card_body'>
-                                        <div className='people_row' onClick={() => router.push(`/id/${community.owner.id}`)}>
+                                        <div className='people_row' onClick={() => router.push(`/id${community.owner.id}`)}>
                                             <Avatar size={50} crop={community.owner?.avatarCrop} className="people_cell_avatar" avatar={community.owner?.avatar}></Avatar>
                                             <div className='people_row_name'>{community.owner?.name} {community.owner?.surname}</div>
                                         </div>
@@ -191,7 +191,7 @@ const Community = () => {
                                 </PageBlock>
                                 {community.albums?.length > 0 &&
                                     <PageBlock>
-                                        <Link href={'/albums/' + -community.id} className='block_header_top'>
+                                        <Link href={'/albums' + -community.id} className='block_header_top'>
                                             <span className='header_label'>{t("albums")}</span>
                                             <span className='header_count'>{community.albumsCount}</span>
                                         </Link>
@@ -215,7 +215,7 @@ const Community = () => {
                                     </PageBlock>}
                                 {community.audios?.length > 0 &&
                                     <PageBlock>
-                                        <Link href={'/audios/' + -community.id} className='block_header_top'>
+                                        <Link href={'/audios' + -community.id} className='block_header_top'>
                                             <span className='header_label'>{t("audios")}</span>
                                             <span className='header_count'>{community.audiosCount}</span>
                                         </Link>
@@ -227,7 +227,7 @@ const Community = () => {
                                     </PageBlock>}
                                 {community.ownerId === authStore?.id && <PageBlock className='page_action_menu_groups'>
                                     <div className='page_actions_expanded'>
-                                        <Link href={`/albums/-${community.id}`} className='page_action_cell'>
+                                        <Link href={`/albums${-community.id}`} className='page_action_cell'>
                                             <svg className='page_action_cell_icon' width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M10.46 3h3.08c.29 0 .53 0 .76.03.7.1 1.35.47 1.8 1.03.25.3.4.64.62.96.2.28.5.46.85.48.3.02.58-.01.88.02a3.9 3.9 0 0 1 3.53 3.53c.02.18.02.37.02.65v4.04c0 1.09 0 1.96-.06 2.66a5.03 5.03 0 0 1-.47 1.92 4.9 4.9 0 0 1-2.15 2.15c-.57.29-1.2.41-1.92.47-.7.06-1.57.06-2.66.06H9.26c-1.09 0-1.96 0-2.66-.06a5.03 5.03 0 0 1-1.92-.47 4.9 4.9 0 0 1-2.15-2.15 5.07 5.07 0 0 1-.47-1.92C2 15.7 2 14.83 2 13.74V9.7c0-.28 0-.47.02-.65a3.9 3.9 0 0 1 3.53-3.53c.3-.03.59 0 .88-.02.34-.02.65-.2.85-.48.21-.32.37-.67.61-.96A2.9 2.9 0 0 1 9.7 3.03c.23-.03.47-.03.76-.03Zm0 1.8-.49.01a1.1 1.1 0 0 0-.69.4c-.2.24-.33.56-.52.82A2.9 2.9 0 0 1 6.54 7.3c-.28.01-.55-.02-.83 0a2.1 2.1 0 0 0-1.9 1.91l-.01.53v3.96c0 1.14 0 1.93.05 2.55.05.62.15.98.29 1.26.3.58.77 1.05 1.35 1.35.28.14.64.24 1.26.29.62.05 1.42.05 2.55.05h5.4c1.13 0 1.93 0 2.55-.05.62-.05.98-.15 1.26-.29a3.1 3.1 0 0 0 1.35-1.35c.14-.28.24-.64.29-1.26.05-.62.05-1.41.05-2.55V9.21a2.1 2.1 0 0 0-1.91-1.9c-.28-.03-.55 0-.83-.01a2.9 2.9 0 0 1-2.22-1.27c-.19-.26-.32-.58-.52-.83a1.1 1.1 0 0 0-.69-.39 3.92 3.92 0 0 0-.49-.01h-3.08Z" fill="currentColor"></path><path fillRule="evenodd" clipRule="evenodd" d="M12 9.8a2.7 2.7 0 1 0 0 5.4 2.7 2.7 0 0 0 0-5.4Zm-4.5 2.7a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0Z" fill="currentColor"></path></svg>
                                             {t('addPhotos')}
                                         </Link>
@@ -235,7 +235,7 @@ const Community = () => {
                                             <svg className='page_action_cell_icon' width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M9.46 2.1h5.08c1.02 0 1.83 0 2.5.05.68.06 1.27.18 1.82.46a4.65 4.65 0 0 1 2.03 2.03c.28.55.4 1.14.46 1.82.05.67.05 1.48.05 2.5v6.08c0 1.02 0 1.83-.05 2.5a4.77 4.77 0 0 1-.46 1.82 4.65 4.65 0 0 1-2.03 2.03c-.55.28-1.14.4-1.82.46-.67.05-1.48.05-2.5.05H9.46c-1.02 0-1.83 0-2.5-.05a4.77 4.77 0 0 1-1.82-.46 4.65 4.65 0 0 1-2.03-2.03 4.78 4.78 0 0 1-.46-1.82c-.05-.67-.05-1.48-.05-2.5V8.96c0-1.02 0-1.83.05-2.5.06-.68.18-1.27.46-1.82A4.65 4.65 0 0 1 5.14 2.6c.55-.28 1.14-.4 1.82-.46.67-.05 1.48-.05 2.5-.05zM7.11 3.95c-.57.05-.9.13-1.15.26A2.85 2.85 0 0 0 4.7 5.46c-.13.25-.21.58-.26 1.15C4.4 7.19 4.4 7.93 4.4 9v6c0 1.06 0 1.81.05 2.39.05.57.13.9.26 1.15.27.54.71.98 1.25 1.25.25.13.58.22 1.15.26.58.05 1.32.05 2.39.05h5c1.06 0 1.81 0 2.39-.05.57-.04.9-.13 1.15-.26a2.85 2.85 0 0 0 1.25-1.25c.13-.25.22-.58.26-1.15.05-.58.05-1.32.05-2.39V9c0-1.06 0-1.81-.05-2.39-.04-.57-.13-.9-.26-1.15a2.85 2.85 0 0 0-1.25-1.25 3.02 3.02 0 0 0-1.15-.26c-.58-.05-1.32-.05-2.39-.05h-5c-1.06 0-1.81 0-2.39.05zm.14 11.8h1a.75.75 0 0 1 .75.75v1a.75.75 0 0 1-.75.75h-1a.75.75 0 0 1-.75-.75v-1a.75.75 0 0 1 .75-.75zm8.5 0h1a.75.75 0 0 1 .75.75v1a.75.75 0 0 1-.75.75h-1a.75.75 0 0 1-.75-.75v-1a.75.75 0 0 1 .75-.75zm-8.5-5h1a.75.75 0 0 1 .75.75v1a.75.75 0 0 1-.75.75h-1a.75.75 0 0 1-.75-.75v-1a.75.75 0 0 1 .75-.75zm8.5 0h1a.75.75 0 0 1 .75.75v1a.75.75 0 0 1-.75.75h-1a.75.75 0 0 1-.75-.75v-1a.75.75 0 0 1 .75-.75zm-8.5-5h1A.75.75 0 0 1 9 6.5v1a.75.75 0 0 1-.75.75h-1a.75.75 0 0 1-.75-.75v-1a.75.75 0 0 1 .75-.75zm8.5 0h1a.75.75 0 0 1 .75.75v1a.75.75 0 0 1-.75.75h-1A.75.75 0 0 1 15 7.5v-1a.75.75 0 0 1 .75-.75z" fill="currentColor"></path></svg>
                                             {t('addVideo')}
                                         </Link>
-                                        <Link href={`/audios/${-community.id}`} className='page_action_cell'>
+                                        <Link href={`/audios${-community.id}`} className='page_action_cell'>
                                             <svg className='page_action_cell_icon' fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path clipRule="evenodd" d="M16.72 4.1a17.3 17.3 0 0 1 1.31-.24c.3-.04.41-.01.46 0 .2.07.38.21.49.4.02.04.07.14.1.44.02.3.02.7.02 1.32L8.9 8.14V7.6c0-.47 0-.78.02-1.02.01-.23.04-.33.07-.4.08-.18.21-.33.38-.45.05-.04.14-.09.36-.15.23-.07.53-.13 1-.23zm-9.62 11h-.2c-1.8 0-3.12.45-4.02 1.21a3.54 3.54 0 0 0-1.28 2.71 3.38 3.38 0 0 0 3.38 3.38c.92 0 1.94-.38 2.7-1.28.77-.9 1.22-2.23 1.22-4.02V9.98l10.2-2.12v5.24h-.2c-1.8 0-3.12.45-4.02 1.21a3.54 3.54 0 0 0-1.28 2.71 3.38 3.38 0 0 0 3.38 3.38c.92 0 1.94-.38 2.7-1.28.77-.9 1.22-2.23 1.22-4.02V6c0-.57 0-1.06-.03-1.45a2.79 2.79 0 0 0-.34-1.2 2.7 2.7 0 0 0-1.46-1.2 2.79 2.79 0 0 0-1.25-.08c-.4.05-.87.15-1.43.26l-.04.01-5.99 1.25h-.03c-.42.1-.8.17-1.1.26-.31.09-.62.2-.9.4-.44.32-.78.74-.99 1.22-.14.32-.2.64-.22.98-.02.3-.02.68-.02 1.12v.03zm8.95.59c-.48.4-.65.9-.65 1.34 0 .86.7 1.57 1.57 1.57.44 0 .94-.17 1.34-.65.41-.47.79-1.34.79-2.85v-.2h-.2c-1.5 0-2.38.38-2.85.79zM3.4 19.03c0-.44.17-.94.65-1.34.47-.41 1.34-.79 2.85-.79h.2v.2c0 1.5-.38 2.38-.79 2.85-.4.48-.9.65-1.33.65-.87 0-1.58-.7-1.58-1.58z" fill="currentColor" fillRule="evenodd"></path></svg>
                                             {t('addTrack')}
                                         </Link>

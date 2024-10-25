@@ -44,7 +44,7 @@ const Album = () => {
             {photoStore.album &&
                 <PageBlock>
                     <div className='page_block_header'>
-                        <div className='header_item_left'><span role="button" onClick={() => router.push(`/albums/${-photoStore.album.communityId || photoStore.album.accountId}`)}>{photoStore.album.account.name}</span> <span className='mx-1'>{photoStore.album.name}</span></div>
+                        <div className='header_item_left'><span role="button" onClick={() => router.push(`/albums${-photoStore.album.communityId || photoStore.album.accountId}`)}>{photoStore.album.account.name}</span> <span className='mx-1'>{photoStore.album.name}</span></div>
                         <div className='header_item_right'>
                             <button onClick={() => { inputFile.current.click() }} className='btn_miyuli'>{t("addPhotos")}</button>
                             <input onChange={(e) => dispatch(uploadImagesInAlbum({ files: [...e.target.files], albumId: photoStore.album.id }))} type='file' ref={inputFile} accept="image/jpeg,image/png,image/gif,image/heic,image/heif,image/webp" multiple style={{ display: 'none' }} />

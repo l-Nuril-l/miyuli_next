@@ -26,7 +26,7 @@ const AccountRow = (props) => {
                 <Avatar size={80} crop={account.avatarCrop} avatar={account.avatar}> </Avatar>
             </div>
             <div className='py-2 flex-grow-1'>
-                <Link href={`/id/${account.id}`} className='text_primary_a'>{account.name} {account.surname}</Link>
+                <Link href={`/id${account.id}`} className='text_primary_a'>{account.name} {account.surname}</Link>
                 <div>
                     <div>
                         <Link href={`/im?sel=${account.id}`} className='text_primary_a'>{t("message")}</Link>

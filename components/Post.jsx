@@ -65,10 +65,10 @@ const Post = (props) => {
     return (
         <PageBlock className="post">
             <div className='post_header'>
-                <Avatar crop={post.author?.avatarCrop} className="avatar_element" size={50} avatar={post.author?.avatar} onClick={() => router.push(`/id/${post.authorId}`)}> </Avatar>
+                <Avatar crop={post.author?.avatarCrop} className="avatar_element" size={50} avatar={post.author?.avatar} onClick={() => router.push(`/id${post.authorId}`)}> </Avatar>
                 <div className='post_author'>
-                    <div className='post_author_name' onClick={() => router.push(`/id/${post.authorId}`)}>
-                        <Link href={`/id/${post.authorId}`}>{post.author?.name} {post.author?.surname}</Link>
+                    <div className='post_author_name' onClick={() => router.push(`/id${post.authorId}`)}>
+                        <Link href={`/id${post.authorId}`}>{post.author?.name} {post.author?.surname}</Link>
                     </div>
                     <div className='post_author_time'>{beautifyDate(postDate, t)}</div>
                 </div>
@@ -93,23 +93,23 @@ const Post = (props) => {
 
                 {(post.repost || post.attachedVideo || post.attachedImage || post.attachedAudioPlaylist) && <div className='repost_container'>
                     <div className='post_header'>
-                        {post.attachedImage && <Avatar className="avatar_element" size={50} avatar={post.attachedImage?.uploadedBy?.avatar || post.attachedVideo?.uploadedBy?.avatar || post.repost?.author?.avatar} onClick={() => router.push(post.attachedImage?.uploadedBy.isCommunity ? '/community/' : '/id/' + post.attachedImage?.uploadedBy.id)}> </Avatar>}
-                        {post.attachedVideo && <Avatar className="avatar_element" size={50} avatar={post.attachedImage?.uploadedBy?.avatar || post.attachedVideo?.uploadedBy?.avatar || post.repost?.author?.avatar} onClick={() => router.push(post.attachedVideo?.uploadedBy.isCommunity ? '/community/' : '/id/' + post.attachedVideo?.uploadedBy.id)}> </Avatar>}
-                        {post.repost && <Avatar className="avatar_element" size={50} avatar={post.attachedImage?.uploadedBy?.avatar || post.attachedVideo?.uploadedBy?.avatar || post.repost?.author?.avatar} onClick={() => router.push('/id/' + post.repost?.author?.id)}> </Avatar>}
+                        {post.attachedImage && <Avatar className="avatar_element" size={50} avatar={post.attachedImage?.uploadedBy?.avatar || post.attachedVideo?.uploadedBy?.avatar || post.repost?.author?.avatar} onClick={() => router.push(post.attachedImage?.uploadedBy.isCommunity ? '/community/' : '/id' + post.attachedImage?.uploadedBy.id)}> </Avatar>}
+                        {post.attachedVideo && <Avatar className="avatar_element" size={50} avatar={post.attachedImage?.uploadedBy?.avatar || post.attachedVideo?.uploadedBy?.avatar || post.repost?.author?.avatar} onClick={() => router.push(post.attachedVideo?.uploadedBy.isCommunity ? '/community/' : '/id' + post.attachedVideo?.uploadedBy.id)}> </Avatar>}
+                        {post.repost && <Avatar className="avatar_element" size={50} avatar={post.attachedImage?.uploadedBy?.avatar || post.attachedVideo?.uploadedBy?.avatar || post.repost?.author?.avatar} onClick={() => router.push('/id' + post.repost?.author?.id)}> </Avatar>}
                         <div className='post_author'>
                             {post.attachedImage && <>
-                                <div className='post_author_name' onClick={() => router.push(post.attachedImage?.uploadedBy.isCommunity ? '/community/' : '/id/' + post.attachedImage?.uploadedBy.id)}>
-                                    <Link href={`${post.attachedImage?.uploadedBy.isCommunity ? '/community/' : '/id/' + post.attachedImage?.uploadedBy.id}`}>{post.attachedImage?.uploadedBy?.name}
+                                <div className='post_author_name' onClick={() => router.push(post.attachedImage?.uploadedBy.isCommunity ? '/community/' : '/id' + post.attachedImage?.uploadedBy.id)}>
+                                    <Link href={`${post.attachedImage?.uploadedBy.isCommunity ? '/community/' : '/id' + post.attachedImage?.uploadedBy.id}`}>{post.attachedImage?.uploadedBy?.name}
                                     </Link></div>
                                 <div className='post_author_time'>{beautifyDate(post.attachedImage?.created, t)}</div></>}
                             {post.attachedVideo && <>
-                                <div className='post_author_name' onClick={() => router.push(post.attachedVideo?.uploadedBy.isCommunity ? '/community/' : '/id/' + post.attachedVideo?.uploadedBy.id)}>
-                                    <Link href={`${post.attachedVideo?.uploadedBy.isCommunity ? '/community/' : '/id/' + post.attachedVideo?.uploadedBy.id}`}>{post.attachedVideo?.uploadedBy?.name}</Link>
+                                <div className='post_author_name' onClick={() => router.push(post.attachedVideo?.uploadedBy.isCommunity ? '/community/' : '/id' + post.attachedVideo?.uploadedBy.id)}>
+                                    <Link href={`${post.attachedVideo?.uploadedBy.isCommunity ? '/community/' : '/id' + post.attachedVideo?.uploadedBy.id}`}>{post.attachedVideo?.uploadedBy?.name}</Link>
                                 </div>
                                 <div className='post_author_time'>{beautifyDate(post.attachedVideo?.created, t)}</div>
                             </>}
                             {post.repost && <>
-                                <div className='post_author_name' onClick={() => router.push('/id/' + post.repost?.author?.avatar?.id)}>
+                                <div className='post_author_name' onClick={() => router.push('/id' + post.repost?.author?.avatar?.id)}>
                                     <Link href={'/id' + post.repost?.author?.avatar?.id}>{post.repost?.author?.name}</Link>
                                 </div>
                                 <div className='post_author_time'>{beautifyDate(post.repost?.createdDate, t)}</div>
@@ -214,7 +214,7 @@ const Post = (props) => {
                     {!post.commentsDisabled ?
                         <>
                             {authStore.session ? <div className="comment_box_wrapper">
-                                <Avatar className="avatar_element" crop={authStore.account?.avatarCrop} avatar={authStore.account?.avatar} onClick={() => router.push(`/id/${post.authorId}`)}> </Avatar>
+                                <Avatar className="avatar_element" crop={authStore.account?.avatarCrop} avatar={authStore.account?.avatar} onClick={() => router.push(`/id${post.authorId}`)}> </Avatar>
                                 <div className='comment_input_wrapper'>
                                     <input ref={ref} className='input input_reply' type="text" value={value} placeholder={t("writeComment")}
                                         onChange={(e) => setValue(e.target.value)} onKeyDown={commentHandleKeyDown} />

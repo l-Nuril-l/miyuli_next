@@ -27,7 +27,7 @@ import './Profile.scss';
 
 export default function Profile({ profile }) {
     const store = useAppStore()
-    const initialized = useRef(0) // profile ? 0 : 2
+    const initialized = useRef(0)
     if (initialized.current === 0) {
         store.dispatch(initializeProfile(profile))
         initialized.current = 1
@@ -151,7 +151,7 @@ export default function Profile({ profile }) {
                                 </Link>
                                 <div className='profile_card_body'>
                                     {profileStore.account.friends?.map(x =>
-                                        <div key={x.id} className='people_cell' onClick={() => router.push(`/id/${x.id}`)}>
+                                        <div key={x.id} className='people_cell' onClick={() => router.push(`/id${x.id}`)}>
                                             <Avatar className='people_cell_avatar' size={50} crop={x.avatarCrop} avatar={x.avatar}></Avatar>
                                             <div className='people_cell_name'>{x.name}</div>
                                         </div>
@@ -172,7 +172,7 @@ export default function Profile({ profile }) {
                             </PageBlock>}
                         {profileStore.account.albums?.length > 0 &&
                             <PageBlock>
-                                <Link href={'/albums/' + profileStore.account.id} className='block_header_top'>
+                                <Link href={'/albums' + profileStore.account.id} className='block_header_top'>
                                     <span className='header_label'>{t("albums")}</span>
                                     <span className='header_count'>{profileStore.account.albumsCount}</span>
                                 </Link>
@@ -196,7 +196,7 @@ export default function Profile({ profile }) {
                             </PageBlock>}
                         {profileStore.account.audios?.length > 0 &&
                             <PageBlock>
-                                <Link href={'/audios/' + profileStore.account.id} className='block_header_top'>
+                                <Link href={'/audios' + profileStore.account.id} className='block_header_top'>
                                     <span className='header_label'>{t("audios")}</span>
                                     <span className='header_count'>{profileStore.account.audiosCount}</span>
                                 </Link>

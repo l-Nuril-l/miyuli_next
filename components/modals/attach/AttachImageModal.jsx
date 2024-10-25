@@ -75,7 +75,7 @@ const AttachImageModal = ({ onFileSelected, onClose }) => {
                 {imagesStore.album &&
                     <PageBlock className="album m-0">
                         <div className='page_block_header'>
-                            <a href={`/albums/${imagesStore.album.accountId}`} onClick={(e) => { e.preventDefault(); setAlbumId(0) }} className='header_item_left'><span role="button">{imagesStore.album.account.name}</span> {imagesStore.album.name}</a>
+                            <a href={`/albums${imagesStore.album.accountId}`} onClick={(e) => { e.preventDefault(); setAlbumId(0) }} className='header_item_left'><span role="button">{imagesStore.album.account.name}</span> {imagesStore.album.name}</a>
                             <div className='header_item_right'>
                                 <button onClick={() => { inputFile.current.click() }} className='btn_miyuli'>{t("addPhotos")}</button>
                                 <input onChange={(e) => dispatch(uploadImagesInAlbum({ files: [...e.target.files], albumId: imagesStore.album.id }))} type='file' ref={inputFile} accept="image/jpeg,image/png,image/gif,image/heic,image/heif,image/webp" multiple style={{ display: 'none' }} />

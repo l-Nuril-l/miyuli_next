@@ -46,7 +46,7 @@ const VideoModal = () => {
 
     const getDestinationLink = () => {
         if (data.uploadedBy?.login) return data.uploadedBy.login;
-        return (data.uploadedBy.isCommunity ? `/community/` : `/id/`) + data.uploadedBy.id
+        return (data.uploadedBy.isCommunity ? `/community/` : `/id`) + data.uploadedBy.id
     }
 
     useEffect(() => {

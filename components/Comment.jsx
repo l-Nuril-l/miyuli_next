@@ -42,12 +42,12 @@ const Comment = ({ comment, ownerId, location }) => {
     return (
         <div className='comment'>
             <div className='comment_header'>
-                <Avatar onClick={() => router.push(`/id/${comment.authorId}`)} className="avatar_element" crop={comment.account?.avatarCrop} avatar={comment.account?.avatar}></Avatar>
+                <Avatar onClick={() => router.push(`/id${comment.authorId}`)} className="avatar_element" crop={comment.account?.avatarCrop} avatar={comment.account?.avatar}></Avatar>
             </div>
             <div className='comment_body'>
                 <div className='comment_author'>
-                    <div className='comment_author_name' onClick={() => router.push(`/id/${comment.accountId}`)}>
-                        <Link href={`/id/${comment.accountId}`}>{comment.account.name} {comment.account.surname}</Link>
+                    <div className='comment_author_name' onClick={() => router.push(`/id${comment.accountId}`)}>
+                        <Link href={`/id${comment.accountId}`}>{comment.account.name} {comment.account.surname}</Link>
                         {
                             (authStore?.id === comment.accountId || authStore?.id === ownerId) &&
                             <div className="delete_action" onClick={(e) => removeComment(e)}>

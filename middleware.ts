@@ -16,9 +16,9 @@ const authorizedRoutes = [
     { route: "/friends", exact: true },
     { route: "/communities", exact: true },
     { route: "/community/", dynamic: true, rules: [/^\/test\/\d+\/edit$/] },
-    { route: "/albums/", dynamic: true },
+    { route: "/albums", dynamic: true },
     { route: "/album/", dynamic: true },
-    { route: "/audios/", dynamic: true },
+    { route: "/audios", dynamic: true },
     { route: "/files", exact: true },
     { route: "/video/", dynamic: true, redirect: '/' },
 ];

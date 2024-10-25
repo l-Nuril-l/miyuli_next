@@ -325,5 +325,6 @@
   "year": "{count, plural, =0 {years} one {year} few {years} many {years} other {# years}}",
   "comment": "{count, plural, =0 {comments} one {comment} few {comments} many {comments} other {# comments}}",
   "view": "{count, plural, =0 {views} one {view} few {views} many {views} other {# views}}",
-  "member": "{count, plural, =0 {members} one {member} few {members} many {members} other {# members}}"
+  "member": "{count, plural, =0 {members} one {member} few {members} many {members} other {# members}}",
+  "noPosts": "There are no posts here yet."
 }

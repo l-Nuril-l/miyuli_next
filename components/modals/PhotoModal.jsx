@@ -51,7 +51,7 @@ const PhotoModal = () => {
 
     const getDestinationLink = () => {
         if (photo.uploadedBy?.login) return photo.uploadedBy.login;
-        return (photo.uploadedBy.isCommunity ? `/community/` : `/id/`) + photo.uploadedBy.id
+        return (photo.uploadedBy.isCommunity ? `/community/` : `/id`) + photo.uploadedBy.id
     }
 
     const [shareModalVisible, setShareModalVisible] = useState(false);
