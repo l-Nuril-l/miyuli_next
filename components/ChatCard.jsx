@@ -1,5 +1,6 @@
 import { beautifyDate } from "@/lib/functions";
 import { useAppSelector } from '@/lib/hooks';
+import { useRouter } from "next/navigation";
 import Avatar from "./Avatar";
 
 const ChatCard = ({ chat, communityId }) => {
