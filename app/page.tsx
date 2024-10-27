@@ -5,5 +5,5 @@ import { permanentRedirect } from "next/navigation";
 
 export default async function Home() {
   const cookiesStore = await cookies();
-  permanentRedirect(cookiesStore.has("auth") ? "feed" : "/");
+  permanentRedirect(cookiesStore.has("auth") ? "feed" : "login");
 }
