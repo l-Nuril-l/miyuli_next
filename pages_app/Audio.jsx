@@ -3,7 +3,6 @@ import AudioCard from '@/components/AudioCard';
 import AudioPlayer from '@/components/AudioPlayer';
 import AudioPlaylists from '@/components/AudioPlaylists';
 import Avatar from '@/components/Avatar';
-import ConditionalWrap from '@/components/ConditionalWrap';
 import PageBlock from '@/components/PageBlock';
 import UploadAudio from '@/components/modals/upload/UploadAudio';
 import { clearAudioData, clearAudios, clearErrorAudios, getAudios, getPlaylists, getRecommendations, reorder, showEditPlaylistModal } from '@/lib/features/audio';
@@ -172,44 +171,33 @@ function Audio({ guest }) {
             onChange={(e) => setSearch(e.target.value)} />
           {search && <CloseSvg className='search_clear' onClick={() => setSearch("")} />}
         </div>
+        <DragDropContext onDragEnd={(result) => onDragEnd(result)}>
+          <Droppable direction='vertical' isDropDisabled={!(!guest && (audioStore.author?.id === authStore.id))} isCombineEnabled={false} ignoreContainerClipping={true} droppableId={"audios"}>
+            {(provided, snapshot) => (
+              <div ref={provided.innerRef}>
+                <InfiniteScroll
+                  className='audios_container'
+                  loadMore={() => !audioStore.errors.main && !audioStore.isFetching ? fetchAudios() : null}
+                  hasMore={audioStore.hasMore}
+                  element="ul"
+                  {...provided.droppableProps}
+                >
+                  {audioStore.audios?.map((x, i) =>
+                    <Draggable isDragDisabled={!(!guest && (audioStore.author?.id === authStore.id))} key={x.id} draggableId={x.id.toString()} index={i}>
+                      {(provided) => (
+                        <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                          <AudioCard off={guest} access={audioStore.author?.access} search={search} authorId={!audioStore.author ? undefined : ((audioStore.author.isCommunity ? -1 : 1) * audioStore.author.id)} key={x.id} audio={x}></AudioCard>
+                        </li>
+                      )}
+                    </Draggable>
+                  )}
+                  {provided.placeholder}
+                </InfiniteScroll>
+              </div>)}
+          </Droppable>
+        </DragDropContext>
 
-        <InfiniteScroll
-          className='audios_container'
-          loadMore={() => !audioStore.errors.main && !audioStore.isFetching ? fetchAudios() : null}
-          hasMore={audioStore.hasMore}
-        >
-          <ConditionalWrap
-            condition={!guest && (audioStore.author?.id === authStore.id)}
-            wrap={(children) =>
-              <DragDropContext onDragEnd={(result) => onDragEnd(result)}>
-                <Droppable isDropDisabled={false} isCombineEnabled={false} ignoreContainerClipping={true} droppableId={"audios"}>
-                  {(provided, snapshot) => (
-                    <ul
-                      {...provided.droppableProps}
-                      ref={provided.innerRef}>
-                      {children}
-                      {provided.placeholder}
-                    </ul>)}
-                </Droppable>
-              </DragDropContext>
-            }>
-            {audioStore.audios?.map((x, i) =>
-              <ConditionalWrap key={x.id}
-                condition={!guest && (audioStore.author?.id === authStore.id)}
-                wrap={(wrappedChildren) =>
-                  <Draggable isDragDisabled={false} key={x.id} draggableId={x.id.toString()} index={i}>
-                    {(provided) => (
-                      <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                        {wrappedChildren}
-                      </li>
-                    )}
-                  </Draggable>
-                }>
-                <AudioCard off={guest} access={audioStore.author?.access} search={search} authorId={!audioStore.author ? undefined : ((audioStore.author.isCommunity ? -1 : 1) * audioStore.author.id)} key={x.id} audio={x}></AudioCard>
-              </ConditionalWrap>)}
-          </ConditionalWrap>
-          {audioStore.isFetching && <div className='loader'></div>}
-        </InfiniteScroll>
+        {audioStore.isFetching && <div className='loader'></div>}
         {!audioStore.hasMore && audioStore.audios.length === 0 && <div className="p-2 text-center">{t("noAudios")}</div>}
         {audioStore.errors.main && <div className='p-2 gap-2 d-flex flex-column align-items-center'>
           <div>{t(handleCommonErrorCases(audioStore.errors.main))}</div>

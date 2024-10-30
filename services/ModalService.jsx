@@ -1,6 +1,7 @@
 "use client";
 
 import AudioPlaylistModal from '@/components/modals/AudioPlaylistModal';
+import FormAudioPlaylist from '@/components/modals/FormAudioPlaylist';
 import PhotoModal from '@/components/modals/PhotoModal';
 import VideoModal from '@/components/modals/VideoModal';
 import { useAppSelector } from '@/lib/hooks';
