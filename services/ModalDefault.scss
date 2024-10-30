@@ -65,7 +65,10 @@ img.modal_image_preview {
 
     .header_button {
         padding: 0 15px;
+        display: flex;
         cursor: pointer;
+        align-items: center;
+        gap: 6px;
 
         &:hover {
             background-color: var(--background-hover);

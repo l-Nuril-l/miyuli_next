@@ -835,3 +835,43 @@ aside:hover a,
   visibility: visible !important;
   display: block !important;
 }
+
+.people_cell {
+  max-width: 33.33%;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  flex: 33.333333%;
+  overflow: hidden;
+
+  .people_cell_avatar {
+    margin: auto;
+  }
+
+  .people_cell_name {
+    text-align: center;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    overflow: hidden;
+    width: 100%;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+
+.header_label {
+  color: var(--text-primary);
+}
+
+
+.header_count {
+  color: var(--text-secondary);
+  padding: 0 6px;
+  font-size: 12px;
+}

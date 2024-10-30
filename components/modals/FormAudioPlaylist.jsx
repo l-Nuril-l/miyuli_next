@@ -211,10 +211,11 @@ const FormAudioPlaylist = (props) => {
                                                 loadMore={() => { !playlistStore.errors.main && !playlistStore.isFetching ? fetchAudios() : null }}
                                                 hasMore={playlistStore.hasMore}
                                                 useWindow={false}
+                                                element="ul"
                                                 getScrollParent={() => scrollParentRef.current}
                                                 {...provided.droppableProps}
                                             >
-                                                {playlistStore.audios?.map((x, i) => {
+                                                {playlistStore.audios?.map((x, i) =>
                                                     <Draggable key={x.id} isDragDisabled={!(playlist.author?.id === authStore.id && addingAudios === false)} draggableId={x.id.toString()} index={i}>
                                                         {(provided) => (
                                                             <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
@@ -231,7 +232,7 @@ const FormAudioPlaylist = (props) => {
                                                             </li>
                                                         )}
                                                     </Draggable>
-                                                })}
+                                                )}
                                                 {provided.placeholder}
                                             </InfiniteScroll>
                                         </div>)}

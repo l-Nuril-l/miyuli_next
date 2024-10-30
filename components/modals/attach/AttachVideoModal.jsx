@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 import InfiniteScroll from "react-infinite-scroller";
 import { useDebounce } from 'react-use';
 import CloseSvg from "../../../assets/CloseSvg";
+import "../../../pages_app/Videos.scss";
 import VideoCard from '../../VideoCard';
 import Modal from "../Modal";
 import "./AttachVideoModal.scss";
