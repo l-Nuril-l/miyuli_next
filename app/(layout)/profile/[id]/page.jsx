@@ -8,7 +8,7 @@ export async function generateMetadata({ params, searchParams }) {
     return {
         ...staticMetadataExtractor('profile', profile),
         ...(await metadataExtractor((await searchParams).z))
-    }
+    };
 }
 
 export default async function Page({ params }) {
