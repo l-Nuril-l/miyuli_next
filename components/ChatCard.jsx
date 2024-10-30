@@ -1,11 +1,13 @@
 import { beautifyDate } from "@/lib/functions";
 import { useAppSelector } from '@/lib/hooks';
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import Avatar from "./Avatar";
 
 const ChatCard = ({ chat, communityId }) => {
     const authStore = useAppSelector((s) => s.auth.session);
     const router = useRouter()
+    const t = useTranslations();
     const target = chat.chatTypeId === 3 ? chat : communityId ? chat.accounts[0] : chat.communities[0] || chat.accounts.find(x => x.id !== authStore.id) || chat.accounts[0];
 
     return (

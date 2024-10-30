@@ -5,7 +5,6 @@ import Profile from '@/components/header/Profile';
 import Search from '@/components/header/Search';
 import { useAppSelector } from '@/lib/hooks';
 import classNames from "classnames";
-import { hasCookie } from 'cookies-next';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -32,7 +31,7 @@ const Header = (props) => {
             </li>
 
         return <li className='header_nav_logo'>
-            <Link href={hasCookie('auth') ? 'feed' : '/'} className='d-flex h_100 align-items-center'>
+            <Link href={authStore.isAuthenticated ? 'feed' : '/'} className='d-flex h_100 align-items-center'>
                 <img className='logo' src="/miyuli.purple-50.png" alt='logo' />
                 <h4 className='logo_text'>MIYULI</h4>
             </Link>

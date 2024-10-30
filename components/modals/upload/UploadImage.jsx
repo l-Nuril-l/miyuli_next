@@ -1,6 +1,5 @@
 "use client";
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
 import { useState } from "react";
 import { Form } from "react-bootstrap";
 import ImageCrop from "../ImageCrop";
@@ -45,7 +44,7 @@ const UploadImage = (props) => {
       <div className="modal-body modal_body">
         {img ? (
           <ImageCrop onCrop={onUploadAction} onBack={() => { setFile(null); setImg(null) }}>
-            <Image
+            <img
               className="modal_image_preview"
               src={img}
               alt="AvatarPreview"
