@@ -205,33 +205,36 @@ const FormAudioPlaylist = (props) => {
                             <DragDropContext onDragEnd={(result) => onDragEnd(result)}>
                                 <Droppable direction='vertical' isDropDisabled={!(playlist.author?.id === authStore.id && addingAudios === false)} isCombineEnabled={false} ignoreContainerClipping={true} droppableId={"audiosPlaylist"}>
                                     {(provided, snapshot) => (
-                                        <InfiniteScroll
-                                            className='audios_container'
-                                            loadMore={() => { !playlistStore.errors.main && !playlistStore.isFetching ? fetchAudios() : null }}
-                                            hasMore={playlistStore.hasMore}
-                                            useWindow={false}
-                                            getScrollParent={() => scrollParentRef.current}
-
-                                            {...provided.droppableProps}
-                                            ref={provided.innerRef}>
-                                            <Draggable key={x.id} isDragDisabled={!(playlist.author?.id === authStore.id && addingAudios === false)} draggableId={x.id.toString()} index={i}>
-                                                {(provided) => (
-                                                    <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                                                        <div className="ape_audio_item_wrap">
-                                                            <AudioCard access={playlist.access} playlistId={playlist.id} key={x.id} audio={x}></AudioCard>
-                                                            <div className="ape_check" onClick={() => handleCheck({ audio: x, state: !((x.isAdded && !remList.some(y => y.id === x.id)) || addList.some(y => y.id === x.id)) })}>
-                                                                {(x.isAdded && !remList.some(y => y.id === x.id)) || addList.some(y => y.id === x.id) ?
-                                                                    <div className="ape_check--checked"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M12 24a12 12 0 1 0 0-24 12 12 0 0 0 0 24Zm6.2-14.8a1 1 0 0 0-1.4-1.4L10 14.58l-2.8-2.8a1 1 0 0 0-1.4 1.42l3.5 3.5a1 1 0 0 0 1.4 0l7.5-7.5Z" fill="currentColor"></path></svg></div>
-                                                                    :
-                                                                    <div className="ape_check--unchecked"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 0a12 12 0 1 1 0 24 12 12 0 0 1 0-24Zm0 1.5a10.5 10.5 0 1 0 0 21 10.5 10.5 0 0 0 0-21Z" fill="currentColor"></path></svg></div>
-                                                                }
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                )}
-                                            </Draggable>
-                                            {provided.placeholder}
-                                        </InfiniteScroll>)}
+                                        <div ref={provided.innerRef}>
+                                            <InfiniteScroll
+                                                className='audios_container'
+                                                loadMore={() => { !playlistStore.errors.main && !playlistStore.isFetching ? fetchAudios() : null }}
+                                                hasMore={playlistStore.hasMore}
+                                                useWindow={false}
+                                                getScrollParent={() => scrollParentRef.current}
+                                                {...provided.droppableProps}
+                                            >
+                                                {playlistStore.audios?.map((x, i) => {
+                                                    <Draggable key={x.id} isDragDisabled={!(playlist.author?.id === authStore.id && addingAudios === false)} draggableId={x.id.toString()} index={i}>
+                                                        {(provided) => (
+                                                            <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                                                                <div className="ape_audio_item_wrap">
+                                                                    <AudioCard access={playlist.access} playlistId={playlist.id} key={x.id} audio={x}></AudioCard>
+                                                                    <div className="ape_check" onClick={() => handleCheck({ audio: x, state: !((x.isAdded && !remList.some(y => y.id === x.id)) || addList.some(y => y.id === x.id)) })}>
+                                                                        {(x.isAdded && !remList.some(y => y.id === x.id)) || addList.some(y => y.id === x.id) ?
+                                                                            <div className="ape_check--checked"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M12 24a12 12 0 1 0 0-24 12 12 0 0 0 0 24Zm6.2-14.8a1 1 0 0 0-1.4-1.4L10 14.58l-2.8-2.8a1 1 0 0 0-1.4 1.42l3.5 3.5a1 1 0 0 0 1.4 0l7.5-7.5Z" fill="currentColor"></path></svg></div>
+                                                                            :
+                                                                            <div className="ape_check--unchecked"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 0a12 12 0 1 1 0 24 12 12 0 0 1 0-24Zm0 1.5a10.5 10.5 0 1 0 0 21 10.5 10.5 0 0 0 0-21Z" fill="currentColor"></path></svg></div>
+                                                                        }
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        )}
+                                                    </Draggable>
+                                                })}
+                                                {provided.placeholder}
+                                            </InfiniteScroll>
+                                        </div>)}
                                 </Droppable>
                             </DragDropContext>
 

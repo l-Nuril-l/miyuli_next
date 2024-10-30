@@ -166,7 +166,7 @@ const Community = () => {
                                 </PageBlock>
                                 {community.accountsCount > 0 && <PageBlock>
                                     <div className='block_header_top'>
-                                        <span className='header_label'>{t("members")}</span>
+                                        <span className='header_label'>{t("member", { count: community.accountsCount })}</span>
                                         <span className='header_count'>{community.accountsCount}</span> 
                                     </div>
                                     <div className='profile_card_body'>

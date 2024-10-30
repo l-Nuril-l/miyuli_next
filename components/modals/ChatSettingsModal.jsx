@@ -60,12 +60,12 @@ const ChatSettingsModal = ({ isOpen, onClose, onLeave, chatId }) => {
                         <UploadImage onUpload={(params) => dispatch(uploadChatAvatar(Object.assign({ id: chat.id }, params)))} isOpen={isAvatarModalOpen} onClose={() => setIsAvatarModalOpen(false)} />
                         <div className="content">
                             <EditableLabel text={chat.name} onAction={(name) => dispatch(renameChat({ id: chat.id, name }))} className="title"></EditableLabel>
-                            <div className="labeled">{chat.accountsCount ?? 0} {t("members")}</div>
+                            <div className="labeled">{chat.accountsCount ?? 0} {t("member", { count: chat.accountsCount })}</div>
                         </div>
                     </header>
                     <div className="chat_info page_block">
                         <div className="page_block_header">
-                            <div className={classNames("header_item", !showAdmins && "active")} onClick={() => setShowAdmins(false)}>{t("members")} {chat.accountsCount}</div>
+                            <div className={classNames("header_item", !showAdmins && "active")} onClick={() => setShowAdmins(false)}>{t("member", { count: chat.accountsCount })} {chat.accountsCount}</div>
                             <div className={classNames("header_item", showAdmins && "active")} onClick={() => setShowAdmins(true)}>{t("admin_other")} {chat.adminsCount}</div>
                         </div>
                         <InfiniteScroll

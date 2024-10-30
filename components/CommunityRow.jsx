@@ -19,7 +19,7 @@ const CommunityRow = (props) => {
                 <Link href={`/community/${community.id}`} className='text_primary_a'>{community.name} {community.surname}</Link>
                 <div>
                     <div className='group_row_labeled'>{community.status}</div>
-                    <div className='group_row_labeled'>{t("member", { count: community.accountsCount })}</div>
+                    <div className='group_row_labeled'>{community.accountsCount} {t("member", { count: community.accountsCount })}</div>
                 </div>
             </div>
             {community.isSubscribed && <div className="p-2"><button className='btn_miyuli mt-0' onClick={() => dispatch(leaveCommunity(community.id))}>{t("leave")}</button></div>}
