@@ -16,6 +16,8 @@ import './VideoModal.scss';
 
 const VideoModal = () => {
     const [searchParamZ, setSearchParamZ] = useQueryState('z')
+    // const searchParamZ = '1_2';
+    // const setSearchParamZ = () => { };
 
     const [isOpen, setIsOpen] = useState(false);
     const t = useTranslations()
@@ -95,7 +97,7 @@ const VideoModal = () => {
                     <div className="mv_title_block">
                         <div className='mv_title'>{videoStore.video?.title}</div>
                         <div className="mv_title_info">
-                            <div>{t("view", { count: data.views })}</div>
+                            <div>{data.views} {t("view", { count: data.views })}</div>
                             <div className='mv_title_date'>{date.getDate()} {date.toLocaleDateString(locale, { month: 'short' })} {date.getFullYear()} в {date.getHours()}:{String(date.getMinutes()).padStart(2, '0')}</div>
                         </div>
                     </div>

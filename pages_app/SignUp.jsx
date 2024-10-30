@@ -333,7 +333,6 @@ export default function SignUp() {
                             onError={() => {
                                 console.log('Login Failed');
                             }}
-                            useOneTap
                         />
                     </div>
                 </div>

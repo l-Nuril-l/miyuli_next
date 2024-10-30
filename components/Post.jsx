@@ -82,7 +82,7 @@ const Post = (props) => {
                         {(authStore.session.id !== post.authorId) &&
                             <div className='miyuli_dropdown_row' onClick={() => { dispatch(reportPost(post.id)) }}>{t("report")}</div>}
                         {(isAdmin && authStore.session.id !== post.authorId) &&
-                            <div className='miyuli_dropdown_row' onClick={() => { dispatch(deletePostAdmin(post.id)) }}>{t("delete") + t("(Admin)")}</div>}
+                            <div className='miyuli_dropdown_row' onClick={() => { dispatch(deletePostAdmin(post.id)) }}>{t("delete") + " (Admin)"}</div>}
                     </div>
                 </div>}
 

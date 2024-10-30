@@ -5,16 +5,15 @@ import FormAudioPlaylist from '@/components/modals/FormAudioPlaylist';
 import PhotoModal from '@/components/modals/PhotoModal';
 import VideoModal from '@/components/modals/VideoModal';
 import { useAppSelector } from '@/lib/hooks';
-import { useSearchParams } from 'next/navigation';
+import { useQueryState } from 'nuqs';
 import "./ModalDefault.scss";
 
 const ModalService = () => {
-    const searchParams = useSearchParams()
+    const [searchParamZ, setSearchParamZ] = useQueryState('z')
     const showFormPlaylistModal = useAppSelector(x => x.audio.showFormPlaylistModal)
     const forceVideoModal = useAppSelector(x => x.video.forceVideoModal)
 
-    // console.log(searchParams?.get('z'), 123);
-    var modalName = searchParams?.get('z')?.match(/^[a-z_]+/i);
+    var modalName = searchParamZ?.match(/^[a-z_]+/i);
     const getModal = () => {
         if (forceVideoModal) return <VideoModal></VideoModal>
         if (!modalName) return;

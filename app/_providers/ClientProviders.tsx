@@ -3,7 +3,7 @@ import { getSelf } from "@/lib/features/auth";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 
 const initialOptions = {
   clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID!,
@@ -21,8 +21,10 @@ export default function ClientProviders({ children }: { children: React.ReactNod
   const dispatch = useAppDispatch();
   const authStore = useAppSelector((s) => s.auth);
   const API_URL = useAppSelector((s) => s.miyuli.API_URL);
-  useEffect(() => {
-    require("bootstrap/dist/js/bootstrap.bundle.min.js");
+  useLayoutEffect(() => {
+    if (typeof window !== "undefined") {
+      require("bootstrap/dist/js/bootstrap");
+    }
   }, []);
 
   useEffect(() => {

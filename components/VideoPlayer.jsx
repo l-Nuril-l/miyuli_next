@@ -1,11 +1,9 @@
 "use client";
 import { formatTime } from '@/lib/functions';
-import { faBackward, faCompress, faExpand, faForward, faPause, faPlay, faVolumeHigh, faVolumeXmark } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import PictureInPictureAltIcon from '@mui/icons-material/PictureInPictureAlt';
-import SlowMotionVideoRoundedIcon from '@mui/icons-material/SlowMotionVideoRounded';
 import classNames from 'classnames';
 import { useEffect, useRef, useState } from 'react';
+import { FaBackward, FaCompress, FaExpand, FaForward, FaPause, FaPlay, FaVolumeMute, FaVolumeUp } from 'react-icons/fa';
+import { MdPictureInPictureAlt, MdSlowMotionVideo } from "react-icons/md";
 import ReactPlayer from 'react-player';
 import useClickOutside from '../hooks/useClickOutside';
 import './VideoPlayer.scss';
@@ -101,7 +99,7 @@ const VideoPlayer = ({ url }) => {
                 </div>
                 <ul className="video-controls">
                     <li className="options left">
-                        <button onClick={() => setMuted(p => !p)} className="volume"><FontAwesomeIcon icon={volume === 0 || muted ? faVolumeXmark : faVolumeHigh} /></button>
+                        <button onClick={() => setMuted(p => !p)} className="volume">{volume === 0 || muted ? <FaVolumeMute /> : <FaVolumeUp />} </button>
                         <input onChange={(e) => { setMuted(false); setVolume(e.target.valueAsNumber) }} value={muted ? 0 : volume} type="range" min={0} max={1} step="any" />
                         <div className="video-timer">
                             <p className="current-time">{formatTime(progress.playedSeconds) ?? '00:00'}</p>
@@ -110,21 +108,21 @@ const VideoPlayer = ({ url }) => {
                         </div>
                     </li>
                     <li className="options center">
-                        <button onClick={() => videoRef.current.seekTo(progress.playedSeconds - 5, 'seconds')} className="skip-backward"><FontAwesomeIcon icon={faBackward} /></button>
-                        <button onClick={() => isPlaying ? setIsPlaying(false) : setIsPlaying(true)} className="play-pause"><FontAwesomeIcon icon={isPlaying ? faPause : faPlay} /></button>
-                        <button onClick={() => videoRef.current.seekTo(progress.playedSeconds + 5, 'seconds')} className="skip-forward"><FontAwesomeIcon icon={faForward} /></button>
+                        <button onClick={() => videoRef.current.seekTo(progress.playedSeconds - 5, 'seconds')} className="skip-backward"><FaBackward /></button>
+                        <button onClick={() => isPlaying ? setIsPlaying(false) : setIsPlaying(true)} className="play-pause">{isPlaying ? <FaPause /> : <FaPlay />}</button>
+                        <button onClick={() => videoRef.current.seekTo(progress.playedSeconds + 5, 'seconds')} className="skip-forward"><FaForward /></button>
                     </li>
                     <li className="options right">
                         <div ref={speedModalRef} className="playback-content">
-                            <button onClick={() => setIsOpenSpeedModal(p => !p)} className="playback-speed" ><SlowMotionVideoRoundedIcon /></button>
+                            <button onClick={() => setIsOpenSpeedModal(p => !p)} className="playback-speed" ><MdSlowMotionVideo /></button>
                             <ul className={classNames("speed-options", isOpenSpeedModal && "show")} onClick={(e) => setPlaybackRate(parseFloat(e.target.dataset.speed) ?? playbackRate)}>
                                 {[2, 1.5, 1, 0.75, 0.5].map(x =>
                                     <li key={x} data-speed={x} className={classNames(playbackRate === x && "active")} >{x === 1 ? "Normal" : x + 'x'}</li>
                                 )}
                             </ul>
                         </div>
-                        <button onClick={() => setPip(!pip)} className="pic-in-pic"><PictureInPictureAltIcon /></button>
-                        <button onClick={() => setIsFullScreen(p => !p)} className="fullscreen"><FontAwesomeIcon icon={isFullScreen ? faCompress : faExpand} /></button>
+                        <button onClick={() => setPip(!pip)} className="pic-in-pic"><MdPictureInPictureAlt /></button>
+                        <button onClick={() => setIsFullScreen(p => !p)} className="fullscreen">{isFullScreen ? <FaCompress /> : <FaExpand />}</button>
                     </li>
                 </ul>
             </div>
@@ -137,7 +135,7 @@ const VideoPlayer = ({ url }) => {
                 volume={muted ? 0 : volume}
                 playbackRate={playbackRate}
                 onDuration={setDuration}
-                loop //remove
+                //loop //remove
                 playsinline
                 pip={pip}
                 ref={videoRef}
