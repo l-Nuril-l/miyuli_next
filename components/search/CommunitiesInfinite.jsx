@@ -11,7 +11,7 @@ const CommunitiesInfinite = ({ text }) => {
     return (
         <>
             <InfiniteScroll
-                loadMore={() => dispatch(searchCommunities({ text, page: searchStore.page }))}
+                loadMore={() => !searchStore.errors.main && !searchStore.isFetching && dispatch(searchCommunities({ text, page: searchStore.page }))}
                 hasMore={searchStore.hasMore}
                 loader={<div className="loader" key={0}>Loading ...</div>}>
                 {searchStore.communities.map(x => <CommunityRow key={x.id} community={x}></CommunityRow>)}

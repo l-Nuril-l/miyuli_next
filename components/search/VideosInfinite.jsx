@@ -10,7 +10,7 @@ const VideosInfinite = ({ text }) => {
     const dispatch = useAppDispatch();
     return (
         <InfiniteScroll
-            loadMore={() => dispatch(searchVideos({ text, page: searchStore.page }))}
+            loadMore={() => !searchStore.errors.main && !searchStore.isFetching && dispatch(searchVideos({ text, page: searchStore.page }))}
             hasMore={searchStore.hasMore}
             loader={<div className="loader" key={0}>Loading ...</div>}>
             <div className="videos_container">
