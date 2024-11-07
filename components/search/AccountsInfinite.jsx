@@ -13,7 +13,7 @@ const AccountsInfinite = ({ text }) => {
             <InfiniteScroll
                 loadMore={() => !searchStore.errors.main && !searchStore.isFetching && dispatch(searchAccounts({ text, page: searchStore.page }))}
                 hasMore={searchStore.hasMore}
-                loader={<div className="loader" key={0}>Loading ...</div>}>
+            >
                 {searchStore.accounts.map(x => <AccountRow key={x.id} account={x}></AccountRow>)}
             </InfiniteScroll>
         </>

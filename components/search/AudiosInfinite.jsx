@@ -12,7 +12,7 @@ const AudiosInfinite = ({ text }) => {
         <InfiniteScroll
             loadMore={() => !searchStore.errors.main && !searchStore.isFetching && dispatch(searchAudios({ text, page: searchStore.page }))}
             hasMore={searchStore.hasMore}
-            loader={<div className="loader" key={0}>Loading ...</div>}>
+        >
             {searchStore.audios.map(x => <AudioCard search={text} key={x.id} audio={x}></AudioCard>)}
         </InfiniteScroll>
     );
