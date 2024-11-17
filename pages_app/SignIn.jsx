@@ -5,16 +5,16 @@ import ChangeTheme from '@/components/header/ChangeTheme';
 import { clearErrors, signIn, signInGoogle } from "@/lib/features/auth";
 import { handleCommonErrorCases } from '@/lib/functions';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
+import { handleSignIn } from "@/services/actions";
 import "@/styles/Auth.scss";
 import { GoogleLogin } from '@react-oauth/google';
 import { useTranslations } from 'next-intl';
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
-import { useCallback, useEffect, useState } from 'react';
+import { startTransition, useCallback, useEffect, useState } from 'react';
 import { Alert } from "react-bootstrap";
 
-
-export default function SignIn() {
+export default function SignInPage() {
 
     const [identifier, setIdentifier] = useState("");
     const [password, setPassword] = useState("");
@@ -24,22 +24,23 @@ export default function SignIn() {
     const authStore = useAppSelector(s => s.auth);
     const router = useRouter()
 
-
-
-
     const getAlertWithErrors = useCallback(() => {
         var res = [];
         authStore.rejected.split(" ").map(x => res.push(handleCommonErrorCases(x)))
         return res;
     }, [authStore?.rejected])
 
-
-
     useEffect(() => {
         return () => {
             dispatch(clearErrors())
         };
     }, [dispatch]);
+
+    async function handleSubmit() {
+        startTransition(async () => {
+            await handleSignIn(authStore.session);
+        });
+    }
 
     return (
         <div>
@@ -53,7 +54,7 @@ export default function SignIn() {
                 </div>
                 <form className="login_form" onSubmit={(e) => {
                     e.preventDefault();
-                    dispatch(signIn({ identifier, password, expire })).unwrap().then(router.push("/feed"))
+                    dispatch(signIn({ identifier, password, expire })).unwrap().then(() => handleSubmit()).then(() => router.push("/feed"))
                 }}>
                     <input className="input w-100" minLength="5" maxLength="256" required name="login" autoComplete="username" value={identifier} onChange={e => setIdentifier(e.target.value)} type="text" placeholder={t('signInTypes')} />
                     <input className="input w-100 mt-1" minLength="8" maxLength="256" required name="password" autoComplete="password" value={password} onChange={e => setPassword(e.target.value)} type="password" placeholder={t('password')} />
