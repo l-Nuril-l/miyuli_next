@@ -1,4 +1,6 @@
 "use client";
+import './Header.scss';
+
 import Audio from '@/components/header/Audio';
 import Notifications from "@/components/header/Notifications";
 import Profile from '@/components/header/Profile';
@@ -9,7 +11,6 @@ import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useMediaQuery } from 'react-responsive';
-import './Header.scss';
 import Navigation from './header/Navigation';
 const Header = (props) => {
     const { wide: isWide, navigation: nav, width } = props;
