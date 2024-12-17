@@ -277,9 +277,8 @@ const AudioService = ({ children }) => {
                 style={{ display: 'none' }}
                 controls
                 autoPlay={audio.isPlaying}
-                volume={audio.volume / 100} // Linear volume
-                // volume={audio.volume === 0 ? 0 : Math.pow(10, audio.volume / 50) / 100}
-                listenInterval={333}
+                volume={audio.volumeScaleType === "logarithmic" ? (audio.volume === 0 ? 0 : Math.pow(10, audio.volume / 50) / 100) : audio.volume / 100}
+                listenInterval={200}
                 onListen={x => { setCurrentTime(x) }}
                 onEnded={() => { rewind(0); dispatch(skip()) }}
             />
