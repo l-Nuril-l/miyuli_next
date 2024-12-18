@@ -75,6 +75,10 @@
     width: 165px;
     font-family: "Permanent Marker", cursive;
     flex-shrink: 0;
+
+    .logo {
+        margin-right: 2px;
+    }
 }
 
 .header_nav_search {
