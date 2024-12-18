@@ -2,6 +2,7 @@
 import PageBlock from '@/components/PageBlock';
 import ChangeLanguage from '@/components/header/ChangeLanguage';
 import ChangeTheme from '@/components/header/ChangeTheme';
+import { useAsyncRouter } from '@/hooks/useAsyncRouter';
 import { clearErrors, signIn, signInGoogle } from "@/lib/features/auth";
 import { handleCommonErrorCases } from '@/lib/functions';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
@@ -23,6 +24,7 @@ export default function SignInPage() {
     const dispatch = useAppDispatch();
     const authStore = useAppSelector(s => s.auth);
     const router = useRouter()
+    const { asyncRefresh } = useAsyncRouter()
 
     const getAlertWithErrors = useCallback(() => {
         var res = [];
@@ -36,9 +38,9 @@ export default function SignInPage() {
         };
     }, [dispatch]);
 
-    async function handleSubmit() {
+    async function handleSubmit(e) {
         startTransition(async () => {
-            await handleSignIn(authStore.session);
+            await handleSignIn(e);
         });
     }
 
@@ -54,7 +56,7 @@ export default function SignInPage() {
                 </div>
                 <form className="login_form" onSubmit={(e) => {
                     e.preventDefault();
-                    dispatch(signIn({ identifier, password, expire })).unwrap().then(() => handleSubmit()).then(() => router.push("/feed"))
+                    dispatch(signIn({ identifier, password, expire })).unwrap().then((e) => handleSignIn(e)).then(() => router.push('/feed'))
                 }}>
                     <input className="input w-100" minLength="5" maxLength="256" required name="login" autoComplete="username" value={identifier} onChange={e => setIdentifier(e.target.value)} type="text" placeholder={t('signInTypes')} />
                     <input className="input w-100 mt-1" minLength="8" maxLength="256" required name="password" autoComplete="password" value={password} onChange={e => setPassword(e.target.value)} type="password" placeholder={t('password')} />

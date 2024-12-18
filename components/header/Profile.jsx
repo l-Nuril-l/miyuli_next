@@ -1,12 +1,13 @@
 "use client";
 import "./Profile.scss";
 
+import { useAsyncRouter } from '@/hooks/useAsyncRouter';
 import { logout } from "@/lib/features/auth";
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { handleSignOut } from "@/services/actions";
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
-import React, { startTransition, useCallback, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import DropDownArrowSvg from '../../assets/DropDownArrowSvg';
 import useClickOutside from "../../hooks/useClickOutside";
 import Avatar from '../Avatar';
@@ -40,6 +41,7 @@ export default function Profile() {
     const dropdown = useRef();
     const router = useRouter()
     const account = useAppSelector(s => s.auth.account)
+    const { asyncRefresh } = useAsyncRouter()
 
     const clickOutside = useClickOutside(() => setOpen(false))
 
@@ -50,10 +52,10 @@ export default function Profile() {
     }, [open])
 
     async function handleLogout() {
-        startTransition(async () => {
-            await handleSignOut();
-        });
-        setTimeout(() => dispatch(logout()), 200)
+        await handleSignOut();
+        asyncRefresh().then(() => {
+            dispatch(logout());
+        })
     }
 
     return (
@@ -69,7 +71,7 @@ export default function Profile() {
                 <ChangeTheme toggle={CustomToggle('top_profile_row')} />
                 <ChangeLanguage toggle={CustomToggle('top_profile_row')} />
 
-                <div onClick={() => { handleLogout(); router.push('/login') }} className="top_profile_row">
+                <div onClick={() => { handleLogout() }} className="top_profile_row">
                     <div className='menu_item_icon'>
                         <svg fill="none" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><path clipRule="evenodd" d="M9.25 2.1h.04a.75.75 0 110 1.5c-1.15 0-1.96 0-2.6.06-.62.05-1 .15-1.3.3-.62.31-1.12.81-1.43 1.42-.15.3-.25.69-.3 1.31-.05.63-.05 1.43-.05 2.57v1.48c0 1.14 0 1.94.05 2.57.05.62.15 1 .3 1.3.31.62.81 1.12 1.42 1.43.3.15.7.25 1.32.3.63.05 1.44.05 2.59.05a.75.75 0 010 1.5h-.04c-1.1 0-1.97 0-2.67-.05a4.9 4.9 0 01-1.88-.46 4.75 4.75 0 01-2.08-2.08 4.88 4.88 0 01-.46-1.87c-.05-.7-.05-1.56-.05-2.65V9.22c0-1.09 0-1.95.05-2.65.06-.71.18-1.32.46-1.87A4.75 4.75 0 014.7 2.62a4.9 4.9 0 011.88-.46c.7-.05 1.57-.05 2.67-.05zm4.5 4.51c.3-.29.77-.29 1.07 0l2.85 2.86c.3.3.3.77 0 1.06l-2.85 2.86a.75.75 0 11-1.06-1.06l1.57-1.58H8.57a.75.75 0 010-1.5h6.76l-1.57-1.58a.75.75 0 010-1.06z" fill="currentColor" fillRule="evenodd"></path></svg>
                     </div>
