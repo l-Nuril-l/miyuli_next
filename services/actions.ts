@@ -1,4 +1,5 @@
 'use server';
+import { revalidatePath } from 'next/cache';
 import { cookies } from 'next/headers';
 
 export async function handleSignIn(session) {
@@ -18,10 +19,12 @@ export async function handleSignIn(session) {
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'lax',
     });
+    revalidatePath('/', "layout");
 }
 
 export async function handleSignOut() {
     const cookieStore = await cookies();
     cookieStore.delete('auth');
     cookieStore.delete('token');
+    revalidatePath('/', "layout");
 }

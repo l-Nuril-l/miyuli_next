@@ -41,7 +41,7 @@ export default function Profile() {
     const dropdown = useRef();
     const router = useRouter()
     const account = useAppSelector(s => s.auth.account)
-    const { asyncRefresh } = useAsyncRouter()
+    const { asyncPush } = useAsyncRouter()
 
     const clickOutside = useClickOutside(() => setOpen(false))
 
@@ -53,7 +53,7 @@ export default function Profile() {
 
     async function handleLogout() {
         await handleSignOut();
-        asyncRefresh().then(() => {
+        asyncPush("/login").then(() => {
             dispatch(logout());
         })
     }
