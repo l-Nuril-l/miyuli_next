@@ -50,21 +50,6 @@ const nextConfig = {
         ],
     },
     reactStrictMode: false,
-    sassOptions: {
-        includePaths: [path.join(__dirname)],
-        silenceDeprecations: ['legacy-js-api'],
-        compiler: "modern-compiler"
-    },
-    experimental: {
-        turbo: {
-            rules: {
-                "*.scss": {
-                    loaders: ["sass-loader"],
-                    as: "*.css",
-                },
-            },
-        }
-    }
 };
 
 module.exports = withNextIntl(nextConfig);

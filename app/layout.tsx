@@ -1,7 +1,5 @@
 import "../styles/root_colors.scss";
 
-import "bootstrap/dist/css/bootstrap.min.css";
-
 import "./globals.css";
 
 import "./index.scss";
@@ -38,7 +36,6 @@ axios.defaults.formSerializer = {
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-
   const locale = await getLocale();
   return (
     <html lang={locale}>
