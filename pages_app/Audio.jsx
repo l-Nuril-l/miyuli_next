@@ -14,7 +14,7 @@ import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
 import { useQueryState } from 'nuqs';
 import { useEffect, useRef, useState } from 'react';
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
 import InfiniteScroll from 'react-infinite-scroller';
 import { useDebounce } from 'react-use';
 import CloseSvg from '../assets/CloseSvg';

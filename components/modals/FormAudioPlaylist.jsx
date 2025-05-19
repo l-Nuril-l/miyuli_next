@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
 import { Form } from 'react-bootstrap';
 import InfiniteScroll from 'react-infinite-scroller';
 import ReactTextareaAutosize from 'react-textarea-autosize';

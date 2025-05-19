@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import classNames from 'classnames';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import EditSvg from '../assets/EditSvg';
 import TopListSvg from '../assets/TopListSvg';
 import TrashCanSvg from '../assets/TrashCanSvg';
@@ -12,7 +12,7 @@ import useAdminPermissionsCheck from '../hooks/useAdminPermissionsCheck';
 import "./AudioCard.scss";
 import AudioModal from './modals/AudioModal';
 
-const AudioCard = ({ audio, off, authorId, playlistId, search, access }) => {
+const AudioCard = memo(({ audio, off, authorId, playlistId, search, access }) => {
   const x = audio;
   const dispatch = useAppDispatch();
   const audioStore = useAppSelector((s) => s.audio)
@@ -81,6 +81,6 @@ const AudioCard = ({ audio, off, authorId, playlistId, search, access }) => {
       <div className='audio_time'>{x.duration}</div>
     </div>
   );
-}
+})
 
 export default AudioCard;
