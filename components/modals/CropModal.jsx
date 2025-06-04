@@ -3,7 +3,6 @@ import { updateAvatar } from '@/lib/features/auth';
 import { cropCommunityAvatar, cropCommunityCover } from '@/lib/features/community';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
 import ImageCrop from './ImageCrop';
 import Modal from './Modal';
 
@@ -27,7 +26,7 @@ const CropModal = (props) => {
             </div>
             <div className='modal_body'>
                 <ImageCrop initialCrop={initialCrop} onCrop={onCropAction} onBack={onClose}>
-                    <Image
+                    <img
                         className="modal_image_preview"
                         src={API_URL + "photo/" + imageId}
                         alt="CropImage"

@@ -93,10 +93,10 @@ const AudioService = ({ children }) => {
                 player.current.audioEl.current.load();
             });
             navigator.mediaSession.setActionHandler("seekbackward", () => {
-                player.current.audioEl.current.currentTime - 5
+                player.current.audioEl.current.currentTime - 10
             });
             navigator.mediaSession.setActionHandler("seekforward", () => {
-                player.current.audioEl.current.currentTime + 5
+                player.current.audioEl.current.currentTime + 10
             });
             navigator.mediaSession.setActionHandler("seekto", (e) => {
                 let newTime = e.seekTime < 0 ? 0 : e.seekTime > audio.audio.duration ? audio.audio.duration : e.seekTime;
@@ -104,10 +104,10 @@ const AudioService = ({ children }) => {
                 setCurrentTime(newTime);
             });
             navigator.mediaSession.setActionHandler("previoustrack", () => {
-                dispatch(skip());
+                dispatch(previous());
             });
             navigator.mediaSession.setActionHandler("nexttrack", () => {
-                dispatch(previous());
+                dispatch(skip());
             });
         }
     }, [audio.audio?.id, audio.audio?.artist, audio.audio?.imageId, audio.audio?.name, audio.audio?.duration, dispatch, API_URL]);

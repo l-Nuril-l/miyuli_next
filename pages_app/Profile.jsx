@@ -45,9 +45,19 @@ export default function Profile({ profile }) {
     const promisesRef = useRef({});
 
     useEffect(() => {
+        //TODO: no avatar
         if (authStore.account?.avatar && profileStore.account && profileStore.account.id === authStore.account.id) {
-            if (profileStore.account.avatar?.id !== authStore.account.avatar.id || (authStore.account.avatarCrop && Object.entries(authStore.account.avatarCrop).toString() !== Object.entries(profileStore.account.avatarCrop)))
-                dispatch(updateProfileAvatar({ avatar: authStore.account.avatar, avatarCrop: authStore.account.avatarCrop }))
+            const accMismatch = profileStore.account.avatar?.id !== authStore.account.avatar.id
+            const cropMismatch = authStore.account.avatarCrop && Object.entries(authStore.account.avatarCrop).toString() !== Object.entries(profileStore.account.avatarCrop).toString()
+
+            // if (accMismatch) {
+            //     console.log('Avatar ID mismatch');
+            // } else if (cropMismatch) {
+            //     console.log('Avatar crop data mismatch', authStore.account.avatarCrop, profileStore.account.avatarCrop);
+            // }
+
+            if (accMismatch || cropMismatch)
+                dispatch(updateProfileAvatar({ avatar: authStore.account.avatar, avatarCrop: authStore.account.avatarCrop }));
         }
     }, [dispatch, authStore.account, profileStore.account]);
 
