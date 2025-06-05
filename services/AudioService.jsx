@@ -282,6 +282,10 @@ const AudioService = ({ children }) => {
         }
     }
 
+    useEffect(() => {
+        setPositionState();
+    }, [currentTime]);
+
     const resetPlayer = () => {
         player.current.audioEl.current.pause()
         rewind(0)
