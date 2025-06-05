@@ -250,11 +250,14 @@ const AudioService = ({ children }) => {
 
     useEffect(() => {
         if (!audio.audio?.id) { return; }
+
+        const aEl = player.current.audioEl.current;
+
         const func = () => localStorage.setItem("audio", JSON.stringify({
             id: audio.audio.id,
             playlistId: audio.playlistId,
             authorId: audio.authorId,
-            currentTime: player.current.audioEl.current.currentTime,
+            currentTime: aEl.currentTime,
             volume: audio.volume,
             search: audio.search,
             isPlaying: audio.isPlaying,
@@ -265,6 +268,19 @@ const AudioService = ({ children }) => {
             window.removeEventListener("beforeunload", func);
         };
     }, [audio]);
+
+    const setPositionState = () => {
+        const audioEl = player.current?.audioEl.current;
+        if (!audioEl) return;
+
+        if ('mediaSession' in navigator && audioEl.duration) {
+            navigator.mediaSession.setPositionState({
+                duration: audioEl.duration || 0,
+                playbackRate: audioEl.playbackRate || 1,
+                position: audioEl.currentTime || 0,
+            });
+        }
+    }
 
     const resetPlayer = () => {
         player.current.audioEl.current.pause()
@@ -287,8 +303,8 @@ const AudioService = ({ children }) => {
                 listenInterval={200}
                 onListen={x => { setCurrentTime(x) }}
                 onEnded={() => { rewind(0); dispatch(skip()) }}
-                onLoadedMetadata={setPositionState()}
-                onSeeked={setPositionState()}
+                onLoadedMetadata={setPositionState}
+                onSeeked={setPositionState}
             />
         </AudioPlayerContext.Provider>
     );
