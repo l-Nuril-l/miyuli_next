@@ -254,31 +254,17 @@ const AudioService = ({ children }) => {
             id: audio.audio.id,
             playlistId: audio.playlistId,
             authorId: audio.authorId,
-            currentTime: currentTime,
+            currentTime: player.current.audioEl.current.currentTime,
             volume: audio.volume,
             search: audio.search,
             isPlaying: audio.isPlaying,
         }));
 
-        const audioEl = player.current.audioEl.current;
-
-        const duration = audioEl.duration;
-        const playbackRate = audioEl.playbackRate;
-        const position = audioEl.currentTime;
-
-        if (isFinite(duration) && !isNaN(duration) && "mediaSession" in navigator) {
-            navigator.mediaSession.setPositionState({
-                duration,
-                playbackRate,
-                position
-            });
-        }
-
         window.addEventListener("beforeunload", func);
         return () => {
             window.removeEventListener("beforeunload", func);
         };
-    }, [audio, currentTime]);
+    }, [audio]);
 
     const resetPlayer = () => {
         player.current.audioEl.current.pause()
@@ -301,6 +287,8 @@ const AudioService = ({ children }) => {
                 listenInterval={200}
                 onListen={x => { setCurrentTime(x) }}
                 onEnded={() => { rewind(0); dispatch(skip()) }}
+                onLoadedMetadata={setPositionState()}
+                onSeeked={setPositionState()}
             />
         </AudioPlayerContext.Provider>
     );
