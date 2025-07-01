@@ -13,6 +13,7 @@ const VideoPlayer = ({ url }) => {
     const videoRef = useRef();
     const playerRef = useRef();
     const timelineRef = useRef();
+    const rafRef = useRef();
     const [isPlaying, setIsPlaying] = useState(true);
     const [isFullScreen, setIsFullScreen] = useState(false);
     const [isMouseOverProgress, setIsMouseOverProgress] = useState(false);
@@ -35,6 +36,25 @@ const VideoPlayer = ({ url }) => {
             document.removeEventListener('fullscreenchange', handleSC)
         };
     }, []);
+
+    useEffect(() => {
+        const updateProgress = () => {
+            if (videoRef.current && isPlaying && !isRewinding) {
+                setProgress(videoRef.current.currentTime);
+            }
+            rafRef.current = requestAnimationFrame(updateProgress);
+        };
+
+        if (isPlaying && !isRewinding) {
+            rafRef.current = requestAnimationFrame(updateProgress);
+        } else {
+            cancelAnimationFrame(rafRef.current);
+        }
+
+        return () => {
+            cancelAnimationFrame(rafRef.current);
+        };
+    }, [isPlaying, isRewinding]);
 
     const eventToPercent = (e) => {
         var bounds = timelineRef.current.getBoundingClientRect();
