@@ -80,7 +80,7 @@ const UploadAudio = (props) => {
                                         {t("limitationMaxFiles")}
                                     </li>
                                     <li>
-                                        {t("fileTemplate")}: {t("artist")}1, {t("artist")}1 - {t("trackName")}.mp3
+                                        {t("fileTemplate")}: {t("artist")}1, {t("artist")}2 - {t("trackName")}.mp3
                                     </li>
                                 </ul>
                                 <Form.Group controlId="formFile" className="mb-3">

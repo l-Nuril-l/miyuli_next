@@ -17,7 +17,7 @@ const VideoPlayer = ({ url }) => {
     const [isFullScreen, setIsFullScreen] = useState(false);
     const [isMouseOverProgress, setIsMouseOverProgress] = useState(false);
     const [duration, setDuration] = useState(0);
-    const [progress, setProgress] = useState({});
+    const [progress, setProgress] = useState(null);
     const [volume, setVolume] = useState(1);
     const [muted, setMuted] = useState(false);
     const [localSliderPercent, setLocalSliderPercent] = useState(null);
@@ -51,9 +51,9 @@ const VideoPlayer = ({ url }) => {
             setLocalSliderPercent(eventToPercent(e));
         }
         const upHandler = (e) => {
-            const percent = eventToPercent(e) / 100;
-            videoRef.current.seekTo(percent, 'fraction');
-            setProgress(prev => { return { ...prev, played: percent, playedSeconds: percent * duration } })
+            const percent = eventToPercent(e);
+            videoRef.current.currentTime = percent * duration / 100;
+            setProgress(videoRef.current.currentTime);
             setIsRewinding(false)
         }
         window.addEventListener("mousemove", moveHandler)
@@ -94,7 +94,7 @@ const VideoPlayer = ({ url }) => {
                     <div className="progress-area">
                         {(isMouseOverProgress || isRewinding) && <span style={{ 'left': getTimePos() + 'px' }}>{formatTime(duration * localSliderPercent / 100) ?? '00:00'}</span>}
                         <div className="progress_bar"
-                            style={{ width: (isRewinding ? localSliderPercent : progress.played * 100) + '%' }} />
+                            style={{ width: (isRewinding ? localSliderPercent : progress * 100 / duration) + '%' }} />
                     </div>
                 </div>
                 <ul className="video-controls">
@@ -102,15 +102,15 @@ const VideoPlayer = ({ url }) => {
                         <button onClick={() => setMuted(p => !p)} className="volume">{volume === 0 || muted ? <FaVolumeMute /> : <FaVolumeUp />} </button>
                         <input onChange={(e) => { setMuted(false); setVolume(e.target.valueAsNumber) }} value={muted ? 0 : volume} type="range" min={0} max={1} step="any" />
                         <div className="video-timer">
-                            <p className="current-time">{formatTime(progress.playedSeconds) ?? '00:00'}</p>
+                            <p className="current-time">{formatTime(progress) ?? '00:00'}</p>
                             <p className="separator"> / </p>
                             <p className="video-duration">{formatTime(duration) ?? '00:00'}</p>
                         </div>
                     </li>
                     <li className="options center">
-                        <button onClick={() => videoRef.current.seekTo(progress.playedSeconds - 5, 'seconds')} className="skip-backward"><FaBackward /></button>
+                        <button onClick={() => videoRef.current.currentTime -= 5} className="skip-backward"><FaBackward /></button>
                         <button onClick={() => isPlaying ? setIsPlaying(false) : setIsPlaying(true)} className="play-pause">{isPlaying ? <FaPause /> : <FaPlay />}</button>
-                        <button onClick={() => videoRef.current.seekTo(progress.playedSeconds + 5, 'seconds')} className="skip-forward"><FaForward /></button>
+                        <button onClick={() => videoRef.current.currentTime += 5} className="skip-forward"><FaForward /></button>
                     </li>
                     <li className="options right">
                         <div ref={speedModalRef} className="playback-content">
@@ -127,25 +127,24 @@ const VideoPlayer = ({ url }) => {
                 </ul>
             </div>
             {<ReactPlayer
-                url={url}
+                src={url}
                 playing={isPlaying}
                 autoPlay
                 width='100%'
                 height='100%'
                 volume={muted ? 0 : volume}
                 playbackRate={playbackRate}
-                onDuration={setDuration}
-                //loop //remove
+                onDurationChange={e => setDuration(e.target.duration)}
                 playsinline
                 pip={pip}
                 ref={videoRef}
-                onDisablePIP={() => setPip(false)}
+                onLeavePictureInPicture={() => setPip(false)}
                 onError={() => setIsPlaying(false)}
-                onSeek={(s) => setProgress(prev => { return { ...prev, played: s * 100 / duration / 100, playedSeconds: s } })}
+                onSeeked={(s) => setProgress(s.target.currentTime)}
                 onPause={() => setIsPlaying(false)}
                 onClick={() => setIsPlaying(p => !p)}
-                onProgress={setProgress}
-                progressInterval={100} />}
+                onTimeUpdate={e => setProgress(e.target.currentTime)}
+            />}
         </div >
 
     );
