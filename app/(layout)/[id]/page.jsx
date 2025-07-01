@@ -1,7 +1,7 @@
 import { metadataExtractor, staticMetadataExtractor } from '@/lib/functions';
 import Profile from '@/pages_app/Profile';
 import { MiyuliService } from '@/services/miyuli.service';
-import { Suspense } from 'react';
+import { Suspense, use } from 'react';
 
 export async function generateMetadata({ params, searchParams }) {
     const profile = await MiyuliService.getAccount((await params).id);
@@ -13,14 +13,24 @@ export async function generateMetadata({ params, searchParams }) {
 
 export default async function Page({ params }) {
     return (
-        <Suspense fallback={<div className='loader'>Loading...</div>}>
-            <Skeleton id={(await params).id} />
-        </Suspense>
-    )
+        <SkeletonWrapper>
+            <ProfileWithSuspense paramsPromise={params} />
+        </SkeletonWrapper>
+    );
 }
-async function Skeleton({ id }) {
-    const profile = await MiyuliService.getAccount(id);
+
+function ProfileWithSuspense({ paramsPromise }) {
+    const resolvedParams = use(paramsPromise);
+    const id = resolvedParams.id;
+
+    const profile = use(MiyuliService.getAccount(id));
+    return <Profile profile={profile} />;
+}
+
+export function SkeletonWrapper({ children, skeleton = <div className='loader'>Loading...</div> }) {
     return (
-        <Profile profile={profile} />
-    )
+        <Suspense fallback={skeleton}>
+            {children}
+        </Suspense>
+    );
 }

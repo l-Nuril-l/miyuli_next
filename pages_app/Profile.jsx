@@ -28,8 +28,18 @@ import './Profile.scss';
 export default function Profile({ profile }) {
     const store = useAppStore()
     const initialized = useRef(0)
-    if (initialized.current === 0) {
+
+    const [profileState, setProfile] = useState(profile);
+
+    useEffect(() => {
         store.dispatch(initializeProfile(profile))
+        // if (profile) {
+        //     setProfile(profile);
+        // }
+    }, []);
+
+    if (initialized.current === 0) {
+    // store.dispatch(initializeProfile(profile))
         initialized.current = 1
     }
 
@@ -46,20 +56,20 @@ export default function Profile({ profile }) {
 
     useEffect(() => {
         //TODO: no avatar
-        if (authStore.account?.avatar && profileStore.account && profileStore.account.id === authStore.account.id) {
-            const accMismatch = profileStore.account.avatar?.id !== authStore.account.avatar.id
-            const cropMismatch = authStore.account.avatarCrop && Object.entries(authStore.account.avatarCrop).toString() !== Object.entries(profileStore.account.avatarCrop).toString()
+        if (authStore.account?.avatar && profileState && profileState.id === authStore.account.id) {
+            const accMismatch = profileState.avatar?.id !== authStore.account.avatar.id
+            const cropMismatch = authStore.account.avatarCrop && Object.entries(authStore.account.avatarCrop).toString() !== Object.entries(profileState.avatarCrop).toString()
 
             // if (accMismatch) {
             //     console.log('Avatar ID mismatch');
             // } else if (cropMismatch) {
-            //     console.log('Avatar crop data mismatch', authStore.account.avatarCrop, profileStore.account.avatarCrop);
+            //     console.log('Avatar crop data mismatch', authStore.account.avatarCrop, profileState.avatarCrop);
             // }
 
             if (accMismatch || cropMismatch)
                 dispatch(updateProfileAvatar({ avatar: authStore.account.avatar, avatarCrop: authStore.account.avatarCrop }));
         }
-    }, [dispatch, authStore.account, profileStore.account]);
+    }, [dispatch, authStore.account, profileState]);
 
     useEffect(() => {
         if (initialized.current === 1) { initialized.current = 2; return; }
@@ -88,7 +98,7 @@ export default function Profile({ profile }) {
     const [isAvatarModalOpen, setIsAvatarModalOpen] = useState(false);
 
     const friendBtnHandler = () => {
-        dispatch(profileStore.account.friendState % 2 === 1 ? deleteFriend(profileStore.account.id) : addFriend(profileStore.account.id))
+        dispatch(profileState.friendState % 2 === 1 ? deleteFriend(profileState.id) : addFriend(profileState.id))
     }
 
     const morePosts = () => {
@@ -106,23 +116,23 @@ export default function Profile({ profile }) {
                     <div><button className='btn_miyuli' onClick={() => dispatch(clearErrorAccount())}>{t('tryAgain')}</button></div>
                 </PageBlock>
             </main>}
-            {profileStore.account && <main className='profile_content'>
+            {profileState && <main className='profile_content'>
                 <div className='left_side'>
                     <StickyBox offsetTop={parseInt(process.env.NEXT_PUBLIC_HEADER_HEIGHT)}>
                         <div className='page_block page_photo'>
                             <div className="owner_photo_wrap">
                                 <UploadImage isOpen={isAvatarModalOpen} onUpload={(params) => dispatch(uploadAvatar(params))} onClose={() => setIsAvatarModalOpen(false)} />
-                                {profileStore.account?.avatar?.id ?
+                                {profileState?.avatar?.id ?
                                     <>
-                                        <ImageCard image={profileStore.account.avatar} crop={profileStore.account.avatarCrop}></ImageCard>
-                                        <CropModal isOpen={isCrop} onClose={() => setIsCrop(false)} initialCrop={profileStore.account.avatarCrop} imageId={profileStore.account.avatar.id} />
+                                        <ImageCard image={profileState.avatar} crop={profileState.avatarCrop}></ImageCard>
+                                        <CropModal isOpen={isCrop} onClose={() => setIsCrop(false)} initialCrop={profileState.avatarCrop} imageId={profileState.avatar.id} />
                                     </> :
                                     <NoAvatar className='profile_avatar_img'></NoAvatar>
                                 }
-                                {profileStore.account?.id === authStore.session?.id && <>
+                                {profileState?.id === authStore.session?.id && <>
                                     <div className='avatar_menu'>
                                         <div onClick={() => setIsAvatarModalOpen(true)}>{t("uploadAvatar")}</div>
-                                        {profileStore.account?.avatar?.id && <div onClick={() => setIsCrop(true)}>{t("cropAvatar")}</div>}
+                                        {profileState?.avatar?.id && <div onClick={() => setIsCrop(true)}>{t("cropAvatar")}</div>}
                                     </div>
                                     <div onClick={() => dispatch(updateProfileAvatar())} className='remove_avatar'>╳</div>
                                 </>}
@@ -145,22 +155,22 @@ export default function Profile({ profile }) {
                                     :
                                     <>
                                         {authStore.session && <>
-                                            <button onClick={() => router.push(`/im?sel=${profileStore.account.id}`)} className='btn_miyuli'><div className="btn_miyuli_in">{t("writeMsg")}</div></button>
-                                            <button onClick={() => friendBtnHandler()} className='btn_miyuli'><div className="btn_miyuli_in">{profileStore.account.friendState === 3 ? t("deleteFriend") : profileStore.account.friendState === 2 ? t("acceptFriendRequest") : profileStore.account.friendState === 1 ? t("cancelFriendRequest") : t("sendFriendRequest")}</div></button>
+                                            <button onClick={() => router.push(`/im?sel=${profileState.id}`)} className='btn_miyuli'><div className="btn_miyuli_in">{t("writeMsg")}</div></button>
+                                            <button onClick={() => friendBtnHandler()} className='btn_miyuli'><div className="btn_miyuli_in">{profileState.friendState === 3 ? t("deleteFriend") : profileState.friendState === 2 ? t("acceptFriendRequest") : profileState.friendState === 1 ? t("cancelFriendRequest") : t("sendFriendRequest")}</div></button>
                                         </>}
                                     </>
                                 }
                             </div>
                         </div>
                         {isMobile && <ProfileInfo />}
-                        {profileStore.account.friends?.length > 0 &&
+                        {profileState.friends?.length > 0 &&
                             <PageBlock>
-                                <Link href={`/friends?id=${profileStore.account.id}&section=all`} className='block_header_top'>
+                                <Link href={`/friends?id=${profileState.id}&section=all`} className='block_header_top'>
                                     <span className='header_label'>{t("friends")}</span>
-                                    <span className='header_count'>{profileStore.account.friendsCount}</span>
+                                    <span className='header_count'>{profileState.friendsCount}</span>
                                 </Link>
                                 <div className='profile_card_body'>
-                                    {profileStore.account.friends?.map(x =>
+                                    {profileState.friends?.map(x =>
                                         <div key={x.id} className='people_cell' onClick={() => router.push(`/id${x.id}`)}>
                                             <Avatar className='people_cell_avatar' size={50} crop={x.avatarCrop} avatar={x.avatar}></Avatar>
                                             <div className='people_cell_name'>{x.name}</div>
@@ -168,51 +178,51 @@ export default function Profile({ profile }) {
                                     )}
                                 </div>
                             </PageBlock>}
-                        {profileStore.account.communities?.length > 0 &&
+                        {profileState.communities?.length > 0 &&
                             <PageBlock>
-                                <Link href={`/communities?id=${profileStore.account.id}`} className='block_header_top'>
+                                <Link href={`/communities?id=${profileState.id}`} className='block_header_top'>
                                     <span className='header_label'>{t("communities")}</span>
-                                    <span className='header_count'>{profileStore.account.communitiesCount}</span>
+                                    <span className='header_count'>{profileState.communitiesCount}</span>
                                 </Link>
                                 <div className='profile_card_body'>
-                                    {profileStore.account.communities?.map(x =>
+                                    {profileState.communities?.map(x =>
                                         <CommunityCard key={x.id} community={x} size={50}></CommunityCard>
                                     )}
                                 </div>
                             </PageBlock>}
-                        {profileStore.account.albums?.length > 0 &&
+                        {profileState.albums?.length > 0 &&
                             <PageBlock>
-                                <Link href={'/albums' + profileStore.account.id} className='block_header_top'>
+                                <Link href={'/albums' + profileState.id} className='block_header_top'>
                                     <span className='header_label'>{t("albums")}</span>
-                                    <span className='header_count'>{profileStore.account.albumsCount}</span>
+                                    <span className='header_count'>{profileState.albumsCount}</span>
                                 </Link>
                                 <div className='albums_wrap'>
-                                    {profileStore.account.albums?.map(x =>
+                                    {profileState.albums?.map(x =>
                                         <AlbumCard key={x.id} album={x}></AlbumCard>
                                     )}
                                 </div>
                             </PageBlock>}
-                        {profileStore.account.videos?.length > 0 &&
+                        {profileState.videos?.length > 0 &&
                             <PageBlock>
-                                <Link href={'/video/' + profileStore.account.id} className='block_header_top'>
+                                <Link href={'/video/' + profileState.id} className='block_header_top'>
                                     <span className='header_label'>{t("videos")}</span>
-                                    <span className='header_count'>{profileStore.account.videosCount}</span>
+                                    <span className='header_count'>{profileState.videosCount}</span>
                                 </Link>
                                 <div className='videos_wrap'>
-                                    {profileStore.account.videos?.map(x =>
+                                    {profileState.videos?.map(x =>
                                         <VideoCard off key={x.id} video={x}></VideoCard>
                                     )}
                                 </div>
                             </PageBlock>}
-                        {profileStore.account.audios?.length > 0 &&
+                        {profileState.audios?.length > 0 &&
                             <PageBlock>
-                                <Link href={'/audios' + profileStore.account.id} className='block_header_top'>
+                                <Link href={'/audios' + profileState.id} className='block_header_top'>
                                     <span className='header_label'>{t("audios")}</span>
-                                    <span className='header_count'>{profileStore.account.audiosCount}</span>
+                                    <span className='header_count'>{profileState.audiosCount}</span>
                                 </Link>
                                 <div className='audios_wrap'>
-                                    {profileStore.account.audios?.map(x =>
-                                        <AudioCard authorId={profileStore.account.id} key={x.id} audio={x}></AudioCard>
+                                    {profileState.audios?.map(x =>
+                                        <AudioCard authorId={profileState.id} key={x.id} audio={x}></AudioCard>
                                     )}
                                 </div>
                             </PageBlock>}
@@ -220,10 +230,10 @@ export default function Profile({ profile }) {
                 </div>
                 <div className='right_side'>
                     {!isMobile && <ProfileInfo />}
-                    {profileStore.account.images?.length > 0 &&
+                    {profileState.images?.length > 0 &&
                         <PageBlock>
                             <div className='profile_images_container'>
-                                {profileStore.account.images.map(x => (
+                                {profileState.images.map(x => (
                                     <ImageCard key={x.id} className='image_block_img' image={x}></ImageCard>
                                 ))}
                             </div>
