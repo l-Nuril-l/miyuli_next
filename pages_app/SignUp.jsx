@@ -328,7 +328,7 @@ export default function SignUp() {
                     <div id="signInDiv">
                         <GoogleLogin
                             onSuccess={credentialResponse => {
-                                dispatch(signInGoogle(credentialResponse.credential)).then(() => router.push("/"))
+                                dispatch(signInGoogle({ credential: credentialResponse.credential, remember: true })).then(() => router.push("/"))
                             }}
                             onError={() => {
                                 console.log('Login Failed');

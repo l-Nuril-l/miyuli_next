@@ -19,7 +19,7 @@ export default function SignInPage() {
 
     const [identifier, setIdentifier] = useState("");
     const [password, setPassword] = useState("");
-    const [expire, setExpire] = useState(false);
+    const [remember, setRemember] = useState(false);
     const t = useTranslations()
     const dispatch = useAppDispatch();
     const authStore = useAppSelector(s => s.auth);
@@ -56,14 +56,14 @@ export default function SignInPage() {
                 </div>
                 <form className="login_form" onSubmit={(e) => {
                     e.preventDefault();
-                    dispatch(signIn({ identifier, password, expire })).unwrap().then((e) => handleSignIn(e)).then(() => router.push('/feed'))
+                    dispatch(signIn({ identifier, password, remember })).unwrap().then((e) => handleSignIn(e)).then(() => router.push('/feed'))
                 }}>
                     <input className="input w-100" minLength="5" maxLength="256" required name="login" autoComplete="username" value={identifier} onChange={e => setIdentifier(e.target.value)} type="text" placeholder={t('signInTypes')} />
                     <input className="input w-100 mt-1" minLength="8" maxLength="256" required name="password" autoComplete="password" value={password} onChange={e => setPassword(e.target.value)} type="password" placeholder={t('password')} />
                     <div className="remember_checkbox" >
-                        <input className="remember_input" type="checkbox" name="expire" id="index_expire_input" value={expire} />
-                        <label onClick={() => setExpire(!expire)} className="remember_label" htmlFor="index_expire_input">
-                            {expire === false ?
+                        <input className="remember_input" type="checkbox" name="remember" id="index_remember_input" value={remember} />
+                        <label onClick={() => setRemember(!remember)} className="remember_label" htmlFor="index_remember_input">
+                            {remember === false ?
                                 <span className="checkbox_off">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M4.05 2.53C4.79 2.13 5.52 2 7.13 2h5.74c1.61 0 2.34.14 3.08.53.65.35 1.17.87 1.52 1.52.4.74.53 1.47.53 3.08v5.74c0 1.61-.14 2.34-.53 3.08a3.64 3.64 0 0 1-1.52 1.52c-.74.4-1.47.53-3.08.53H7.13c-1.61 0-2.34-.14-3.08-.53a3.64 3.64 0 0 1-1.52-1.52c-.4-.74-.53-1.47-.53-3.08V7.13c0-1.61.14-2.34.53-3.08.35-.65.87-1.17 1.52-1.52Zm3.08.97c-1.53 0-1.96.14-2.38.36-.38.2-.69.5-.9.9-.21.4-.35.84-.35 2.37v5.74c0 1.53.14 1.96.36 2.38.2.38.5.69.9.9.4.21.84.35 2.37.35h5.74c1.53 0 1.96-.14 2.38-.36.38-.2.69-.5.9-.9.21-.4.35-.84.35-2.37V7.13c0-1.53-.14-1.96-.36-2.38-.2-.38-.5-.69-.9-.9-.4-.21-.84-.35-2.37-.35H7.13Z" fill="currentColor"></path></svg>
                                 </span>
@@ -87,7 +87,7 @@ export default function SignInPage() {
                         <div id="signInDiv">
                             <GoogleLogin
                                 onSuccess={credentialResponse => {
-                                    dispatch(signInGoogle(credentialResponse.credential)).then(() => router.push("/"))
+                                    dispatch(signInGoogle({ credential: credentialResponse.credential, remember })).then(() => router.push("/"))
                                 }}
                                 onError={() => {
                                     console.log('Login Failed');
