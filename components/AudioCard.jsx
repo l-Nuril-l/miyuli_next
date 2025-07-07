@@ -12,8 +12,6 @@ import useAdminPermissionsCheck from '../hooks/useAdminPermissionsCheck';
 import "./AudioCard.scss";
 import AudioModal from './modals/AudioModal';
 
-AudioCard.displayName = "AudioCard";
-
 const AudioCard = memo(({ audio, off, authorId, playlistId, search, access }) => {
   const x = audio;
   const dispatch = useAppDispatch();
@@ -84,5 +82,7 @@ const AudioCard = memo(({ audio, off, authorId, playlistId, search, access }) =>
     </div>
   );
 })
+
+AudioCard.displayName = "AudioCard";
 
 export default AudioCard;

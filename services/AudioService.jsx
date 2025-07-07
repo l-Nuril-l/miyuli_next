@@ -109,12 +109,6 @@ const AudioService = ({ children }) => {
             navigator.mediaSession.setActionHandler("nexttrack", () => {
                 dispatch(skip());
             });
-
-            navigator.mediaSession.setPositionState({
-                duration: player.current.audioEl.current.currentTime.d,
-                playbackRate: 1,
-                position: player.current.audioEl.current,
-            });
         }
     }, [audio.audio?.id, audio.audio?.artist, audio.audio?.imageId, audio.audio?.name, audio.audio?.duration, dispatch, API_URL]);
 
