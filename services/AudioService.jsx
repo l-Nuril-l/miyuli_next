@@ -44,7 +44,7 @@ const AudioService = ({ children }) => {
             navigator.mediaSession.metadata = new MediaMetadata({
                 title: audio.audio.name,
                 artist: audio.audio.artist,
-                album: "The Ultimate Collection (Remastered)",
+                // album: "The Ultimate Collection (Remastered)",
                 ...(audio.audio.imageId ? {
                     artwork: [
                         // {
@@ -93,10 +93,10 @@ const AudioService = ({ children }) => {
                 player.current.audioEl.current.load();
             });
             navigator.mediaSession.setActionHandler("seekbackward", () => {
-                player.current.audioEl.current.currentTime - 10
+                player.current.audioEl.current.currentTime -= 10
             });
             navigator.mediaSession.setActionHandler("seekforward", () => {
-                player.current.audioEl.current.currentTime + 10
+                player.current.audioEl.current.currentTime += 10
             });
             navigator.mediaSession.setActionHandler("seekto", (e) => {
                 let newTime = e.seekTime < 0 ? 0 : e.seekTime > audio.audio.duration ? audio.audio.duration : e.seekTime;
