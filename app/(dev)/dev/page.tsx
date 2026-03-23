@@ -15,16 +15,6 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export async function setTokenCookie() {
-  "use server";
-  (await cookies()).set("token", Math.random().toString(36).slice(2), {
-    httpOnly: true,
-    sameSite: "strict",
-    maxAge: 60 * 60 * 24 * 30,
-  });
-  return Math.random().toString(36).slice(2);
-}
-
 export default async function Home() {
   const cookiesStore = await cookies();
   const headerStore = await headers();
